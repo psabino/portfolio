@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paulo Sabino — Senior Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #00AEEF;
+      --dark: #3C3C3C;
+      --light-gray: #D9D9D9;
+      --white: #FFFFFF;
+      --card-shadow-blue: 0px 8px 32px 0px rgba(174, 255, 250, 0.55);
+      --card-shadow-purple: 0px 8px 32px 0px rgba(73, 52, 148, 0.35);
+      --card-shadow-pink: 0px 8px 32px 0px rgba(239, 181, 243, 0.55);
+      --card-shadow-gray: 0px 8px 16px 0px rgba(213, 213, 213, 0.5);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: #fff;
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ─── LAYOUT ─── */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      padding: 46px 0 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 180px;
+    }
+
+    .avatar-wrap {
+      position: relative;
+      width: 64px;
+      height: 64px;
+      flex-shrink: 0;
+    }
+
+    .avatar-wrap img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .online-dot {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 12px;
+      height: 12px;
+      background: #4CAF50;
+      border-radius: 50%;
+      border: 2px solid #fff;
+    }
+
+    .brand-text h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .brand-text p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--dark);
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    nav a {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--dark);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover { opacity: 0.7; }
+    nav a.active { opacity: 0.4; }
+
+    /* ─── ABOUT / HERO ─── */
+    .about-section {
+      padding: 64px 0 0;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 352px 1fr;
+      gap: 0;
+      align-items: start;
+      min-height: 368px;
+      position: relative;
+    }
+
+    .about-photo {
+      position: relative;
+      height: 368px;
+    }
+
+    .about-photo img {
+      position: absolute;
+      bottom: 0;
+      left: -14px;
+      width: 320px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 0 0 0 0;
+    }
+
+    .about-content {
+      padding-top: 4px;
+    }
+
+    .about-headline {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.3;
+      margin-bottom: 20px;
+    }
+
+    .about-headline a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .about-body {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.65;
+      max-width: 700px;
+    }
+
+    .about-body p + p { margin-top: 18px; }
+
+    /* Tools row */
+    .powered-row {
+      margin-top: 40px;
+    }
+
+    .powered-label {
+      font-size: 16px;
+      font-weight: 600;
+      color: #000;
+      opacity: 0.3;
+      margin-bottom: 12px;
+    }
+
+    .tool-icons {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tool-icons img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      border-radius: 8px;
+      transition: transform 0.2s;
+    }
+
+    .tool-icons img:hover { transform: scale(1.15); }
+
+    .tool-emoji {
+      font-size: 36px;
+      line-height: 1;
+    }
+
+    /* ─── PROJECTS SECTION ─── */
+    .projects-section {
+      padding: 80px 0 0;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .project-card {
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--light-gray);
+      height: 360px;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover { transform: translateY(-6px); }
+
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-card.shadow-blue  { box-shadow: var(--card-shadow-blue); }
+    .project-card.shadow-purple { box-shadow: var(--card-shadow-purple); }
+    .project-card.shadow-pink  { box-shadow: var(--card-shadow-pink); }
+    .project-card.shadow-gray  { box-shadow: var(--card-shadow-gray); }
+
+    .card-nda {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-nda-blur {
+      position: absolute;
+      inset: 0;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .card-nda .nda-label {
+      position: relative;
+      z-index: 2;
+      font-size: 18px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 1px;
+      text-align: center;
+    }
+
+    .card-placeholder {
+      background: var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-placeholder span {
+      font-size: 14px;
+      font-weight: 400;
+      color: #aaa;
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      height: 1px;
+      background: var(--light-gray);
+      opacity: 0.5;
+      margin: 0;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 40px 0 60px;
+    }
+
+    .footer-inner {
+      text-align: center;
+    }
+
+    .footer-headline {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .footer-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--dark);
+      margin-bottom: 28px;
+    }
+
+    .footer-sub a {
+      color: var(--blue);
+      font-weight: 400;
+      text-decoration: none;
+    }
+
+    .footer-sub a:hover { text-decoration: underline; }
+
+    .social-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .social-row a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      transition: transform 0.2s, opacity 0.2s;
+      opacity: 0.85;
+    }
+
+    .social-row a:hover { transform: translateY(-3px); opacity: 1; }
+
+    .social-row img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up {
+      animation: fadeUp 0.65s ease both;
+    }
+
+    .fade-up:nth-child(1) { animation-delay: 0.05s; }
+    .fade-up:nth-child(2) { animation-delay: 0.15s; }
+    .fade-up:nth-child(3) { animation-delay: 0.25s; }
+    .fade-up:nth-child(4) { animation-delay: 0.35s; }
+
+    .card-reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .card-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .about-inner {
+        grid-template-columns: 1fr;
+      }
+      .about-photo {
+        display: none;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="header-inner fade-up">
+        <div class="header-brand">
+          <div class="avatar-wrap">
+            <img
+              src="https://www.figma.com/api/mcp/asset/b4b36fd5-d5cc-4748-b8cb-f8d849f5cb7e"
+              alt="Paulo Sabino"
+              onerror="this.style.background='#e0e0e0'; this.removeAttribute('src');"
+            />
+            <span class="online-dot"></span>
+          </div>
+          <div class="brand-text">
+            <h1>Paulo Sabino</h1>
+            <p>Senior Product Designer</p>
+          </div>
+        </div>
+
+        <nav>
+          <a href="#home" class="active">Home</a>
+          <a href="#about">About</a>
+          <a href="#articles">Articles</a>
+          <a href="#contact">Contact</a>
+          <a href="#resume">Resumé</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT / HERO -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-inner">
+
+        <div class="about-photo fade-up">
+          <img
+            src="https://www.figma.com/api/mcp/asset/faed2a40-4b7a-499c-89ab-cbaf47480973"
+            alt="Paulo Sabino"
+            onerror="this.style.display='none'"
+          />
+        </div>
+
+        <div class="about-content">
+          <h2 class="about-headline fade-up">
+            I'm Paulo, a Senior Product Designer at <a href="https://kokku.com.br" target="_blank" rel="noopener">Kokku</a>. 👋🏻
+          </h2>
+
+          <div class="about-body fade-up">
+            <p>I love creating user-centered experiences and advocating for people's needs, bringing their voices into the product development process.</p>
+            <p>Driven by a passion for UX research and a generalist mindset, I craft interfaces that not only look great but feel right. I've brought ideas to life across mobile apps, games, design systems and dashboards.</p>
+          </div>
+
+          <div class="powered-row fade-up">
+            <p class="powered-label">Powered by</p>
+            <div class="tool-icons">
+              <img src="https://www.figma.com/api/mcp/asset/2f67a4da-e32c-4fe6-aab1-c7bd6fff7464" alt="Figma" title="Figma" />
+              <img src="https://www.figma.com/api/mcp/asset/7f0e9421-1d96-4a05-b545-c2af12ed684b" alt="Photoshop" title="Photoshop" />
+              <img src="https://www.figma.com/api/mcp/asset/730f35ae-587b-4b03-8b76-ca56519a40ac" alt="Illustrator" title="Illustrator" />
+              <img src="https://www.figma.com/api/mcp/asset/66ad330d-f4fd-4058-ab65-fd31d5852f06" alt="After Effects" title="After Effects" />
+              <img src="https://www.figma.com/api/mcp/asset/787846e4-2f45-420f-8f99-8c682ee5ec51" alt="Unity" title="Unity" />
+              <img src="https://www.figma.com/api/mcp/asset/6c6a03a3-a028-422c-b947-390056082ddb" alt="Notion" title="Notion" />
+              <span class="tool-emoji">☕️</span>
+              <span class="tool-emoji">🎮</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects-section" id="home">
+    <div class="container">
+      <div class="projects-grid">
+
+        <!-- PAO Puzzles (teal glow) -->
+        <a href="paw-puzzles.html" class="project-card shadow-blue card-reveal" style="text-decoration:none">
+          <img
+            src="https://www.figma.com/api/mcp/asset/22872942-8fcb-4d0c-9d64-4b17c04b69b2"
+            alt="PAO Puzzles"
+            onerror="this.closest('.project-card').querySelector('.placeholder-label') && (this.closest('.project-card').querySelector('.placeholder-label').style.display='block'); this.style.display='none'"
+          />
+        </a>
+
+        <!-- NDA project (blurred) -->
+        <div class="project-card shadow-gray card-nda card-reveal" style="transition-delay:0.1s">
+          <img
+            src="https://www.figma.com/api/mcp/asset/cda9dbac-9b8e-402d-836c-c31fb349eaed"
+            alt="NDA Project"
+            style="filter: blur(14px); transform: scale(1.05);"
+          />
+          <div class="card-nda-blur"></div>
+          <div class="nda-label">🔒 NDA</div>
+        </div>
+
+        <!-- Poker Nights (purple glow) -->
+        <div class="project-card shadow-purple card-reveal" style="transition-delay:0.2s">
+          <img
+            src="https://www.figma.com/api/mcp/asset/e61b4b35-14b0-4466-b928-ca1b700d480d"
+            alt="Poker Nights"
+          />
+        </div>
+
+        <!-- Fashion Match (pink glow) -->
+        <div class="project-card shadow-pink card-reveal" style="transition-delay:0.3s">
+          <img
+            src="https://www.figma.com/api/mcp/asset/29a129a3-834f-4fc0-8e5a-f69b014c6254"
+            alt="Fashion Match"
+          />
+        </div>
+
+        <!-- Placeholder row -->
+        <div class="project-card card-placeholder card-reveal" style="transition-delay:0.4s">
+          <span>Coming soon</span>
+        </div>
+
+        <div class="project-card card-placeholder card-reveal" style="transition-delay:0.5s">
+          <span>Coming soon</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="container">
+      <div class="divider" style="margin-bottom:40px"></div>
+      <div class="footer-inner">
+        <p class="footer-headline">Let's get in touch!</p>
+        <p class="footer-sub">
+          Feel free to send a message <a href="/cdn-cgi/l/email-protection#94e4f5e1f8fbd4f1ecf5f9e4f8f1baf7fbf9">here</a>
+          or reach me out <a href="https://linkedin.com/in/paulosabino" target="_blank" rel="noopener">Linkedin</a>. 😊
+        </p>
+        <div class="social-row">
+          <a href="https://linkedin.com/in/paulosabino" target="_blank" rel="noopener" title="LinkedIn">
+            <img src="https://www.figma.com/api/mcp/asset/4c9baec2-2666-40ba-aea5-48571d7ad702" alt="LinkedIn" />
+          </a>
+          <a href="#" target="_blank" rel="noopener" title="Behance / Medium">
+            <img src="https://www.figma.com/api/mcp/asset/2c6034a5-1ea5-4d71-9318-bd1771b191c8" alt="Social" />
+          </a>
+          <a href="#" target="_blank" rel="noopener" title="Dribbble">
+            <img src="https://www.figma.com/api/mcp/asset/2a859e76-a6a6-4ae8-9712-04a158b6bf14" alt="Social" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Intersection Observer for card reveal animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.card-reveal').forEach(el => observer.observe(el));
+
+    // Smooth nav active state on scroll
+    const sections = document.querySelectorAll('section[id], header');
+    const navLinks = document.querySelectorAll('nav a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 80) current = sec.id;
+      });
+      navLinks.forEach(a => {
+        a.classLis
