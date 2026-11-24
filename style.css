@@ -422,6 +422,17 @@ section { padding: 60px 0; }
 
 .body-text p + p { margin-top: 14px; }
 
+/* Links inside paragraphs and captions: bold, no underline, site blue
+   (same as the headline and footer links) */
+.body-text a,
+.caption a {
+  color: var(--blue);
+  font-weight: 700;
+  text-decoration: none;
+}
+.body-text a:hover,
+.caption a:hover { color: color-mix(in srgb, var(--blue), #000 12%); }
+
 /* ─── OVERVIEW + ROLE ─── */
 .overview-grid {
   display: grid;

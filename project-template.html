@@ -11,6 +11,9 @@
     style="--image-shadow: 0 8px 24px #251952; --image-radius: 8px;"
     (match --image-radius to rounded corners baked into the image, as % of width / height).
   - Colored sections: class="color-band" style="--band-color: #281D51" (text turns white).
+  - Page accent: <body style="--accent: #hex"> colors the back-to-top
+    button. For a light accent, also set a dark arrow on the button:
+    --accent-contrast: #hex (needs 3:1 contrast).
   - Remove the noindex meta tag below when publishing a real project page.
 -->
 <html lang="en">
@@ -251,8 +254,7 @@
     </div>
   </footer>
 
-  <!-- BACK TO TOP: set the page color with style="--accent: #hex".
-       For a light accent, also set a dark arrow: --accent-contrast: #hex (needs 3:1 contrast). -->
+  <!-- BACK TO TOP: uses the page accent set on <body>. -->
   <a href="#top" class="back-to-top" aria-label="Back to top" title="Back to top">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M12 19V5M5 12l7-7 7 7" />
