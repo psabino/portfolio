@@ -102,7 +102,7 @@
         -->
         
         <!-- Paw Puzzles (teal glow) -->
-        <div class="project-card shadow-blue card-reveal" >
+        <div class="project-card shadow-blue card-reveal" style="view-transition-name: project-pp">
           <a href="paw-puzzles.html" style="text-decoration:none">
             <img
               src="images/thumb-pp.png"
@@ -113,7 +113,7 @@
         </div>
 
         <!-- Poker Nights (purple glow) -->
-        <div class="project-card shadow-purple card-reveal" style="transition-delay:0.2s">
+        <div class="project-card shadow-purple card-reveal" style="transition-delay:0.2s; view-transition-name: project-pn">
           <a href="poker-nights.html" style="text-decoration:none">
             <img
               src="images/thumb-poker.png"
@@ -167,16 +167,18 @@
   </footer>
 
   <script>
-    // Intersection Observer for card reveal animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.card-reveal').forEach(el => observer.observe(el));
+    // Fallback card reveal for browsers without scroll-driven animations
+    // (or with reduced motion); otherwise style.css handles it natively.
+    const nativeReveal = CSS.supports('(animation-timeline: view()) and (animation-range: entry)') &&
+      matchMedia('(prefers-reduced-motion: no-preference)').matches;
+    if (!nativeReveal) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.card-reveal').forEach(el => observer.observe(el));
+    }
 
     // Smooth nav active state on scroll
     const sections = document.querySelectorAll('section[id], header');

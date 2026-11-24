@@ -37,7 +37,7 @@
   </header>
 
   <!-- HERO -->
-  <div class="hero hero--blue">
+  <div class="hero hero--blue" style="view-transition-name: project-pp">
     <div class="hero-title fade-up">
       <h2>Paw Puzzles</h2>
       <p>A mobile blast game with cute dogs 🐾</p>
@@ -275,11 +275,16 @@
   </footer>
 
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    // Fallback reveal for browsers without scroll-driven animations
+    // (or with reduced motion); otherwise style.css handles it natively.
+    const nativeReveal = CSS.supports('(animation-timeline: view()) and (animation-range: entry)') &&
+      matchMedia('(prefers-reduced-motion: no-preference)').matches;
+    if (!nativeReveal) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
 
     // Videos: only play while on screen, and never autoplay for people
     // who ask their system for reduced motion (they get play controls instead).

@@ -740,6 +740,43 @@ footer {
 }
 .reveal.visible { opacity: 1; transform: none; }
 
+/* Native scroll-driven reveals: elements fade/slide in as they enter the
+   viewport, tied to scroll position (no JS). Browsers without support, and
+   users who prefer reduced motion, keep the IntersectionObserver path above. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    @keyframes reveal-in {
+      from { opacity: 0; translate: 0 28px; }
+    }
+
+    .reveal,
+    .card-reveal {
+      opacity: 1;
+      transform: none;
+      animation: reveal-in linear both;
+      /* Longhands after the shorthand so it doesn't reset them */
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+  }
+}
+
+/* ─── PAGE TRANSITIONS ─── */
+/* Cross-fade between pages; the project card morphs into the case study hero
+   (matching view-transition-name on both pages). Unsupported browsers
+   (e.g. Firefox) navigate normally. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+
+.project-card,
+.hero { view-transition-class: project; }
+
+::view-transition-group(*.project) {
+  animation-duration: 0.45s;
+  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
   .about-inner {
