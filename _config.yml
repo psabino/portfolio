@@ -1,0 +1,7 @@
+# GitHub Pages (Jekyll) settings for this static site.
+# Pages are plain HTML; Jekyll only copies them. Folders starting with "_"
+# (like _templates/) are never published. These are left out too:
+exclude:
+  - scripts
+  - private
+  - README.md

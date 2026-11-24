@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page not found — Paulo Sabino</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <meta name="robots" content="noindex" />
+  <script>
+    // Old addresses from before the site moved to folders: forward them to
+    // their new URLs (keeping any #section or ?query) before anything renders.
+    (() => {
+      const moved = {
+        '/about.html': '/about/',
+        '/articles.html': '/articles/',
+        '/socials.html': '/socials/',
+        '/paw-puzzles.html': '/work/paw-puzzles/',
+        '/poker-nights.html': '/work/poker-nights/',
+        '/fashion-match.html': '/work/fashion-match/',
+        '/braspag-dash.html': '/work/braspag-dash/',
+        '/index.html': '/',
+        '/work/': '/',
+        '/work': '/',
+      };
+      const to = moved[location.pathname];
+      if (to) location.replace(to + location.search + location.hash);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="top" tabindex="-1">
+    <div class="container">
+      <div class="header-inner fade-up">
+        <a href="/" class="header-brand" style="text-decoration:none">
+          <div class="avatar-wrap">
+            <img src="/images/profile-picture.png" alt="Paulo Sabino" />
+            <span class="online-dot"></span>
+          </div>
+          <div class="brand-text">
+            <h1>Paulo Sabino</h1>
+            <p>UI/UX Designer</p>
+          </div>
+        </a>
+        <nav>
+          <a href="/">Work</a>
+          <a href="/about/">About</a>
+          <a href="/articles/">Articles</a>
+          <a href="/socials/">Socials</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- NOT FOUND -->
+  <section class="cv cv--page">
+    <div class="container">
+      <div class="cv-row">
+        <h2 class="cv-title">Page not found</h2>
+        <div class="body-text">
+          <p>This page doesn't exist or has moved.</p>
+          <p><a href="/">Go to the homepage</a> to see my work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact" tabindex="-1">
+    <div class="container">
+      <div class="divider"></div>
+      <div class="footer-inner">
+        <p class="footer-headline">Let's get in touch!</p>
+        <p class="footer-sub">
+          Feel free to send me a message on <a href="https://linkedin.com/in/paulosabino" target="_blank" rel="noopener">Linkedin</a>. 😊
+        </p>
+        <div class="social-row">
+          <a href="https://linkedin.com/in/paulosabino" target="_blank" rel="noopener" title="LinkedIn">
+            <img src="/images/social/linkedin.png" alt="LinkedIn" />
+          </a>
+          <a href="https://dribbble.com/neurose" target="_blank" rel="noopener" title="Dribble">
+            <img src="/images/social/dribbble.png" alt="Social" />
+          </a>
+          <a href="https://www.instagram.com/neurose/" target="_blank" rel="noopener" title="Instagram">
+            <img src="/images/social/instagram.png" alt="Social" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <a href="#top" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
+  </a>
+
+  <script>
+    // Fallback reveal for browsers without scroll-driven animations.
+    // style.css hides .reveal/.card-reveal only in this case; with reduced
+    // motion nothing is hidden, so nothing needs revealing.
+    const fallbackReveal = matchMedia('(prefers-reduced-motion: no-preference)').matches &&
+      !CSS.supports('(animation-timeline: view()) and (animation-range: entry)');
+    if (fallbackReveal) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    // Back to top: show the button once the page has scrolled one screen height
+    // (a marker placed 100vh down has scrolled above the viewport).
+    const bttSentinel = document.createElement('div');
+    bttSentinel.className = 'back-to-top-sentinel';
+    bttSentinel.setAttribute('aria-hidden', 'true');
+    document.body.append(bttSentinel);
+    new IntersectionObserver(([entry]) => {
+      document.documentElement.classList.toggle('scrolled', entry.boundingClientRect.top < 0);
+    }).observe(bttSentinel);
+  </script>
+
+</body>
+</html>

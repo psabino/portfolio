@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
 
@@ -16,9 +16,9 @@
   <header id="top" tabindex="-1">
     <div class="container">
       <div class="header-inner fade-up">
-        <a href="index.html" class="header-brand" style="text-decoration:none">
+        <a href="/" class="header-brand" style="text-decoration:none">
           <div class="avatar-wrap">
-            <img src="images/profile-picture.png" alt="Paulo Sabino" />
+            <img src="/images/profile-picture.png" alt="Paulo Sabino" />
             <span class="online-dot"></span>
           </div>
           <div class="brand-text">
@@ -27,10 +27,10 @@
           </div>
         </a>
         <nav>
-          <a href="index.html">Work</a>
-          <a href="about.html">About</a>
-          <a href="articles.html" class="active" aria-current="page">Articles</a>
-          <a href="socials.html">Socials</a>
+          <a href="/">Work</a>
+          <a href="/about/">About</a>
+          <a href="/articles/" class="active" aria-current="page">Articles</a>
+          <a href="/socials/">Socials</a>
         </nav>
       </div>
     </div>
@@ -46,7 +46,7 @@
           <li class="article">
             <!-- Thumbnail repeats the title link, so it's skipped by keyboard and screen readers -->
             <a class="article-thumb" href="https://medium.com/ux-user-experience-design-em-portugues/7-li%C3%A7%C3%B5es-que-aprendi-como-primeiro-ux-ui-da-braspag-ecd55fa145c2" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-              <img src="images/articles/medium.png" alt="" />
+              <img src="/images/articles/medium.png" alt="" />
             </a>
             <div class="article-info">
               <h3><a href="https://medium.com/ux-user-experience-design-em-portugues/7-li%C3%A7%C3%B5es-que-aprendi-como-primeiro-ux-ui-da-braspag-ecd55fa145c2" target="_blank" rel="noopener">7 lessons I've learned being the first UX/UI Designer in a company.</a></h3>
@@ -56,7 +56,7 @@
           <li class="article">
             <!-- Talk without a link: plain thumbnail, not clickable -->
             <span class="article-thumb">
-              <img src="images/articles/slides.svg" alt="" />
+              <img src="/images/articles/slides.svg" alt="" />
             </span>
             <div class="article-info">
               <h3>Usability Heuristics in a Game context.</h3>
@@ -66,7 +66,7 @@
           <li class="article">
             <!-- Talk without a link: plain thumbnail, not clickable -->
             <span class="article-thumb">
-              <img src="images/articles/slides.svg" alt="" />
+              <img src="/images/articles/slides.svg" alt="" />
             </span>
             <div class="article-info">
               <h3>UX/UI/AI/IxD - What's the meaning of all these letters?</h3>
@@ -89,18 +89,18 @@
         </div>
         <ul class="more-projects more-projects--row">
           <li>
-            <a class="project-card project-card--mini shadow-blue" href="paw-puzzles.html" style="view-transition-name: project-pp">
-              <img src="images/thumb-pp.png" alt="Paw Puzzles" loading="lazy" />
+            <a class="project-card project-card--mini shadow-blue" href="/work/paw-puzzles/" style="view-transition-name: project-pp">
+              <img src="/images/thumbs/paw-puzzles.png" alt="Paw Puzzles" loading="lazy" />
             </a>
           </li>
           <li>
-            <a class="project-card project-card--mini shadow-purple" href="poker-nights.html" style="view-transition-name: project-pn">
-              <img src="images/thumb-poker.png" alt="Poker Nights" loading="lazy" />
+            <a class="project-card project-card--mini shadow-purple" href="/work/poker-nights/" style="view-transition-name: project-pn">
+              <img src="/images/thumbs/poker-nights.png" alt="Poker Nights" loading="lazy" />
             </a>
           </li>
           <li>
-            <a class="project-card project-card--mini shadow-pink" href="fashion-match.html" style="view-transition-name: project-fm">
-              <img src="images/thumb-fashion.png" alt="Fashion Match" loading="lazy" />
+            <a class="project-card project-card--mini shadow-pink" href="/work/fashion-match/" style="view-transition-name: project-fm">
+              <img src="/images/thumbs/fashion-match.png" alt="Fashion Match" loading="lazy" />
             </a>
           </li>
         </ul>
@@ -119,13 +119,13 @@
         </p>
         <div class="social-row">
           <a href="https://linkedin.com/in/paulosabino" target="_blank" rel="noopener" title="LinkedIn">
-            <img src="images/social-linkedin.png" alt="LinkedIn" />
+            <img src="/images/social/linkedin.png" alt="LinkedIn" />
           </a>
           <a href="https://dribbble.com/neurose" target="_blank" rel="noopener" title="Dribble">
-            <img src="images/social-dribble.png" alt="Social" />
+            <img src="/images/social/dribbble.png" alt="Social" />
           </a>
           <a href="https://www.instagram.com/neurose/" target="_blank" rel="noopener" title="Instagram">
-            <img src="images/social-insta.png" alt="Social" />
+            <img src="/images/social/instagram.png" alt="Social" />
           </a>
         </div>
       </div>
@@ -164,7 +164,7 @@
   </script>
 
   <!-- Shuffles the project suggestions on every visit -->
-  <script src="js/more-projects.js" defer></script>
+  <script src="/js/more-projects.js" defer></script>
 
 </body>
 </html>

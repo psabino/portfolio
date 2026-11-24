@@ -2,19 +2,20 @@
 // MAX_SUGGESTIONS other projects in a random order on every visit.
 // The cards written in each page's HTML stay as the fallback without JS.
 //
-// To add a project: add it here (and its card to index.html). Every case
-// study picks it up automatically.
+// To add a project: add it here (and its card to the homepage). Every page
+// with a .more-projects row picks it up automatically.
 const PROJECTS = [
-  { href: 'paw-puzzles.html',   code: 'pp', thumb: 'images/thumb-pp.png',      name: 'Paw Puzzles',   glow: 'shadow-blue' },
-  { href: 'poker-nights.html',  code: 'pn', thumb: 'images/thumb-poker.png',   name: 'Poker Nights',  glow: 'shadow-purple' },
-  { href: 'fashion-match.html', code: 'fm', thumb: 'images/thumb-fashion.png', name: 'Fashion Match', glow: 'shadow-pink' },
-  { href: 'braspag-dash.html',  code: 'bd', thumb: 'images/thumb-braspag.png', name: 'Braspag Dash',  glow: 'shadow-blue' },
+  { href: '/work/paw-puzzles/',   code: 'pp', thumb: '/images/thumbs/paw-puzzles.png',   name: 'Paw Puzzles',   glow: 'shadow-blue' },
+  { href: '/work/poker-nights/',  code: 'pn', thumb: '/images/thumbs/poker-nights.png',  name: 'Poker Nights',  glow: 'shadow-purple' },
+  { href: '/work/fashion-match/', code: 'fm', thumb: '/images/thumbs/fashion-match.png', name: 'Fashion Match', glow: 'shadow-pink' },
+  { href: '/work/braspag-dash/',  code: 'bd', thumb: '/images/thumbs/braspag-dash.png',  name: 'Braspag Dash',  glow: 'shadow-blue' },
 ];
 const MAX_SUGGESTIONS = 3;
 
 const list = document.querySelector('.more-projects');
 if (list) {
-  const current = location.pathname.split('/').pop() || 'index.html';
+  // Current page as a folder path, e.g. /work/paw-puzzles/ (index.html dropped)
+  const current = location.pathname.replace(/index\.html$/, '');
 
   // Fisher–Yates shuffle of every project except the current page
   const picks = PROJECTS.filter(p => p.href !== current);

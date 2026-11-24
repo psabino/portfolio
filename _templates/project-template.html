@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <!--
-  PROJECT PAGE TEMPLATE — copy this file to <project-slug>.html and fill it in.
+  PROJECT PAGE TEMPLATE — copy this file to work/<project-slug>/index.html and
+  fill it in; it will be served at /work/<project-slug>/. This _templates/
+  folder isn't published (GitHub Pages skips folders starting with "_").
 
-  - Images go in images/projects/<slug>/ (e.g. images/projects/bd/)
+  - All paths start from the site root (/css/..., /images/...), so they work
+    at any folder depth. Preview with a local server from the repo root:
+    python3 -m http.server 8000, then open http://localhost:8000/
+  - Images go in /images/projects/<slug>/ (e.g. /images/projects/bd/)
+  - Add the project to js/more-projects.js and its card to the homepage.
   - Delete any section the project doesn't need; every section is self-contained.
   - Hero gradient: set --hero-color on .hero (or use .hero--blue / .hero--purple).
   - Page transition: give the hero and its homepage card the same
@@ -14,18 +20,16 @@
   - Page accent: <body style="--accent: #hex"> colors the back-to-top
     button. For a light accent, also set a dark arrow on the button:
     --accent-contrast: #hex (needs 3:1 contrast).
-  - Remove the noindex meta tag below when publishing a real project page.
 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex" />
   <title>Project Name — Paulo Sabino</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
 
@@ -33,9 +37,9 @@
   <header id="top" tabindex="-1">
     <div class="container">
       <div class="header-inner fade-up">
-        <a href="index.html" class="header-brand" style="text-decoration:none">
+        <a href="/" class="header-brand" style="text-decoration:none">
           <div class="avatar-wrap">
-            <img src="images/profile-picture.png" alt="Paulo Sabino" />
+            <img src="/images/profile-picture.png" alt="Paulo Sabino" />
             <span class="online-dot"></span>
           </div>
           <div class="brand-text">
@@ -44,10 +48,10 @@
           </div>
         </a>
         <nav>
-          <a href="index.html" class="active" aria-current="true">Work</a>
-          <a href="about.html">About</a>
-          <a href="articles.html">Articles</a>
-          <a href="socials.html">Socials</a>
+          <a href="/" class="active" aria-current="true">Work</a>
+          <a href="/about/">About</a>
+          <a href="/articles/">Articles</a>
+          <a href="/socials/">Socials</a>
         </nav>
       </div>
     </div>
@@ -61,7 +65,7 @@
     </div>
 
     <div class="hero-phones">
-      <!-- Replace with: <img src="images/projects/slug/hero.png" alt="" /> -->
+      <!-- Replace with: <img src="/images/projects/slug/hero.png" alt="" /> -->
       <div class="image-placeholder">Hero image</div>
     </div>
   </div>
@@ -79,7 +83,7 @@
         <div class="role">
           <h2 class="section-title">Role</h2>
           <div class="role-card">
-            <!-- Company logo: <img src="images/projects/slug/company-logo.png" alt="Company" /> -->
+            <!-- Company logo: <img src="/images/projects/slug/company-logo.png" alt="Company" /> -->
             <div class="role-info">
               <strong>Role Title</strong>
               <p>Company</p>
@@ -104,7 +108,7 @@
   <section class="color-band" style="--band-color: #281D51">
     <div class="container">
       <h2 class="section-title reveal">Design Process</h2>
-      <!-- Replace with: <img class="process-image reveal" src="images/projects/slug/process.png" alt="Design process: step 1, then step 2, ..." /> -->
+      <!-- Replace with: <img class="process-image reveal" src="/images/projects/slug/process.png" alt="Design process: step 1, then step 2, ..." /> -->
       <div class="image-placeholder reveal">Design process diagram</div>
     </div>
   </section>
@@ -122,7 +126,7 @@
           </ul>
         </div>
         <div>
-          <!-- Replace with: <img class="image-shadow" src="images/projects/slug/research.png" alt="..." /> -->
+          <!-- Replace with: <img class="image-shadow" src="/images/projects/slug/research.png" alt="..." /> -->
           <div class="image-placeholder">Research image</div>
           <p class="caption">Image caption</p>
         </div>
@@ -134,7 +138,7 @@
   <section>
     <div class="container">
       <h2 class="section-title reveal">Benchmark</h2>
-      <!-- Replace with: <img class="image-shadow image-center reveal" src="images/projects/slug/benchmark.png" alt="..." /> -->
+      <!-- Replace with: <img class="image-shadow image-center reveal" src="/images/projects/slug/benchmark.png" alt="..." /> -->
       <div class="image-placeholder reveal">Benchmark image</div>
       <div class="body-text reveal" style="margin-top:32px">
         <p>Describe what the benchmark showed and the direction it led to.</p>
@@ -144,7 +148,7 @@
 
   <!-- WIREFRAMES: three options side by side.
        For a single wide image instead, replace .wireframe-columns with:
-       <img class="image-shadow reveal" src="images/projects/slug/wireframe.png" alt="..." /> -->
+       <img class="image-shadow reveal" src="/images/projects/slug/wireframe.png" alt="..." /> -->
   <section class="wireframe-section">
     <div class="container">
       <h2 class="section-title reveal">Wireframe Exploration</h2>
@@ -187,7 +191,7 @@
       </p>
       <!-- Replace with:
            <img class="image-shadow reveal" style="--image-shadow: 0 8px 24px #251952;"
-                src="images/projects/slug/mockup1.png" alt="..." /> -->
+                src="/images/projects/slug/mockup1.png" alt="..." /> -->
       <div class="image-placeholder reveal">Mockup 1</div>
     </div>
   </section>
@@ -198,7 +202,7 @@
       <h2 class="section-title reveal">Gallery Title</h2>
       <h3 class="section-subtitle reveal">Optional subtitle</h3>
       <div class="image-stack">
-        <!-- One per image: <img class="image-shadow reveal" src="images/projects/slug/screen-1.png" alt="..." /> -->
+        <!-- One per image: <img class="image-shadow reveal" src="/images/projects/slug/screen-1.png" alt="..." /> -->
         <div class="image-placeholder reveal" style="width:100%">Image 1</div>
         <div class="image-placeholder reveal" style="width:100%">Image 2</div>
       </div>
@@ -212,7 +216,7 @@
     <div class="container">
       <h2 class="section-title reveal">Animation Title</h2>
       <!-- Replace with:
-           <video class="content-video reveal" src="images/projects/slug/animation.mp4"
+           <video class="content-video reveal" src="/images/projects/slug/animation.mp4"
                   autoplay muted loop playsinline preload="metadata"
                   aria-label="Describe the animation"></video> -->
       <div class="image-placeholder reveal">Video</div>
@@ -227,23 +231,23 @@
     <p>You can also check these projects:</p>
     <ul class="more-projects">
       <li>
-        <a class="project-card project-card--mini shadow-blue" href="paw-puzzles.html" style="view-transition-name: project-pp">
-          <img src="images/thumb-pp.png" alt="Paw Puzzles" loading="lazy" />
+        <a class="project-card project-card--mini shadow-blue" href="/work/paw-puzzles/" style="view-transition-name: project-pp">
+          <img src="/images/thumbs/paw-puzzles.png" alt="Paw Puzzles" loading="lazy" />
         </a>
       </li>
       <li>
-        <a class="project-card project-card--mini shadow-purple" href="poker-nights.html" style="view-transition-name: project-pn">
-          <img src="images/thumb-poker.png" alt="Poker Nights" loading="lazy" />
+        <a class="project-card project-card--mini shadow-purple" href="/work/poker-nights/" style="view-transition-name: project-pn">
+          <img src="/images/thumbs/poker-nights.png" alt="Poker Nights" loading="lazy" />
         </a>
       </li>
       <li>
-        <a class="project-card project-card--mini shadow-pink" href="fashion-match.html" style="view-transition-name: project-fm">
-          <img src="images/thumb-fashion.png" alt="Fashion Match" loading="lazy" />
+        <a class="project-card project-card--mini shadow-pink" href="/work/fashion-match/" style="view-transition-name: project-fm">
+          <img src="/images/thumbs/fashion-match.png" alt="Fashion Match" loading="lazy" />
         </a>
       </li>
       <li>
-        <a class="project-card project-card--mini shadow-blue" href="braspag-dash.html" style="view-transition-name: project-bd">
-          <img src="images/thumb-braspag.png" alt="Braspag Dash" loading="lazy" />
+        <a class="project-card project-card--mini shadow-blue" href="/work/braspag-dash/" style="view-transition-name: project-bd">
+          <img src="/images/thumbs/braspag-dash.png" alt="Braspag Dash" loading="lazy" />
         </a>
       </li>
     </ul>
@@ -260,13 +264,13 @@
         </p>
         <div class="social-row">
           <a href="https://linkedin.com/in/paulosabino" target="_blank" rel="noopener" title="LinkedIn">
-            <img src="images/social-linkedin.png" alt="LinkedIn" />
+            <img src="/images/social/linkedin.png" alt="LinkedIn" />
           </a>
           <a href="https://dribbble.com/neurose" target="_blank" rel="noopener" title="Dribble">
-            <img src="images/social-dribble.png" alt="Social" />
+            <img src="/images/social/dribbble.png" alt="Social" />
           </a>
           <a href="https://www.instagram.com/neurose/" target="_blank" rel="noopener" title="Instagram">
-            <img src="images/social-insta.png" alt="Social" />
+            <img src="/images/social/instagram.png" alt="Social" />
           </a>
         </div>
       </div>
@@ -320,7 +324,7 @@
   </script>
 
   <!-- Shuffles the "other projects" suggestions on every visit -->
-  <script src="js/more-projects.js" defer></script>
+  <script src="/js/more-projects.js" defer></script>
 
 </body>
 </html>
