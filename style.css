@@ -274,14 +274,19 @@ nav a.active { opacity: 0.4; }
 /* ═══════ CASE STUDY PAGES (paw-puzzles.html) ═══════ */
 
 /* ─── HERO ─── */
+/* Hero gradient: white at the top fading into the project color.
+   Variants: hero--blue (default) and hero--purple. */
 .hero {
   position: relative;
-  background: linear-gradient(to bottom, #fff 13.6%, #3fe6fe 183%);
+  background: linear-gradient(to bottom, #fff 13.6%, var(--hero-color, #3fe6fe) 183%);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+.hero--blue   { --hero-color: #3fe6fe; }
+.hero--purple { --hero-color: #5A42B7; }
 
 .hero-title {
   text-align: center;
