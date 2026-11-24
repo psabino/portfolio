@@ -17,7 +17,9 @@
   --card-shadow-gray: 0px 8px 16px 0px rgba(213, 213, 213, 0.5);
 }
 
-html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
 
 body {
   font-family: 'Lato', sans-serif;
@@ -106,7 +108,12 @@ nav a {
 }
 
 nav a:hover { opacity: 0.7; }
-nav a.active { opacity: 0.4; }
+nav a.active,
+.nav--spy a:target-current { opacity: 0.4; }
+
+/* Homepage scrollspy: natively highlights the link whose section is in view
+   (Chrome/Edge 140+); other browsers use the script in index.html. */
+.nav--spy { scroll-target-group: auto; }
 
 /* ─── ABOUT / HERO ─── */
 .about-section {
@@ -188,10 +195,13 @@ nav a.active { opacity: 0.4; }
   height: 40px;
   object-fit: contain;
   border-radius: 8px;
-  transition: transform 0.2s;
+  scale: 1; /* identity, so hover doesn't create a new stacking context */
+  transition: scale 0.2s;
 }
 
-.tool-icons img:hover { transform: scale(1.15); }
+@media (prefers-reduced-motion: no-preference) {
+  .tool-icons img:hover { scale: 1.15; }
+}
 
 .tool-emoji {
   font-size: 36px;
@@ -216,10 +226,16 @@ nav a.active { opacity: 0.4; }
   height: 360px;
   position: relative;
   cursor: pointer;
+  /* Hover lift uses transform; translate is reserved for the scroll reveal,
+     so the two never fight over the same property. Identity base value
+     keeps the stacking context stable on hover. */
+  transform: translateY(0);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.project-card:hover { transform: translateY(-6px); }
+@media (prefers-reduced-motion: no-preference) {
+  .project-card:hover { transform: translateY(-6px); }
+}
 
 .project-card img {
   width: 100%;
@@ -695,11 +711,16 @@ footer {
   justify-content: center;
   width: 40px;
   height: 40px;
-  transition: transform 0.2s, opacity 0.2s;
+  translate: 0; /* identity, so hover doesn't create a new stacking context */
+  transition: translate 0.2s, opacity 0.2s;
   opacity: 0.85;
 }
 
-.social-row a:hover { transform: translateY(-3px); opacity: 1; }
+.social-row a:hover { opacity: 1; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .social-row a:hover { translate: 0 -3px; }
+}
 
 .social-row img {
   width: 40px;
@@ -708,42 +729,25 @@ footer {
 }
 
 /* ─── ANIMATIONS ─── */
+/* All motion is opt-in: with "reduce motion" on, every element renders
+   in its final, visible state and nothing slides or scales. */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; translate: 0 28px; }
 }
 
-.fade-up {
-  animation: fadeUp 0.65s ease both;
-}
-
-.fade-up:nth-child(1) { animation-delay: 0.05s; }
-.fade-up:nth-child(2) { animation-delay: 0.15s; }
-.fade-up:nth-child(3) { animation-delay: 0.25s; }
-.fade-up:nth-child(4) { animation-delay: 0.35s; }
-
-.card-reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
-}
-
-.card-reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
-}
-.reveal.visible { opacity: 1; transform: none; }
-
-/* Native scroll-driven reveals: elements fade/slide in as they enter the
-   viewport, tied to scroll position (no JS). Browsers without support, and
-   users who prefer reduced motion, keep the IntersectionObserver path above. */
 @media (prefers-reduced-motion: no-preference) {
+  .fade-up { animation: fadeUp 0.65s ease both; }
+  .fade-up:nth-child(1) { animation-delay: 0.05s; }
+  .fade-up:nth-child(2) { animation-delay: 0.15s; }
+  .fade-up:nth-child(3) { animation-delay: 0.25s; }
+  .fade-up:nth-child(4) { animation-delay: 0.35s; }
+}
+
+/* Scroll reveals (.reveal on case studies, .card-reveal on the homepage).
+   Content is visible by default; it's only hidden when motion is allowed
+   and scripting is on, so it can never get stuck invisible without JS. */
+@media (prefers-reduced-motion: no-preference) and (scripting: enabled) {
+  /* Native: fade/slide in tied to scroll position, no JS */
   @supports ((animation-timeline: view()) and (animation-range: entry)) {
     @keyframes reveal-in {
       from { opacity: 0; translate: 0 28px; }
@@ -751,12 +755,32 @@ footer {
 
     .reveal,
     .card-reveal {
-      opacity: 1;
-      transform: none;
       animation: reveal-in linear both;
       /* Longhands after the shorthand so it doesn't reset them */
       animation-timeline: view();
       animation-range: entry 0% entry 100%;
+    }
+  }
+
+  /* Fallback: hidden until the page script adds .visible */
+  @supports not ((animation-timeline: view()) and (animation-range: entry)) {
+    .reveal,
+    .card-reveal {
+      opacity: 0;
+      translate: 0 28px;
+      transition: opacity 0.55s ease, translate 0.55s ease;
+    }
+
+    /* Keep the project card's own hover transition alongside the reveal */
+    .card-reveal {
+      transition: opacity 0.55s ease, translate 0.55s ease,
+                  transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .reveal.visible,
+    .card-reveal.visible {
+      opacity: 1;
+      translate: 0;
     }
   }
 }

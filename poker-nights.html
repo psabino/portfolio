@@ -28,10 +28,10 @@
           </div>
         </a>
         <nav>
-          <a href="index.html" class="active">Work</a>
-          <a href="#">About</a>
+          <a href="index.html" class="active" aria-current="true">Work</a>
+          <a href="index.html#about">About</a>
           <a href="#">Articles</a>
-          <a href="#">Contact</a>
+          <a href="#contact">Contact</a>
           <a href="#">Resumé</a>
         </nav>
       </div>
@@ -200,7 +200,7 @@
   </div>
 
   <!-- FOOTER -->
-  <footer>
+  <footer id="contact" tabindex="-1">
     <div class="container">
       <div class="divider"></div>
       <div class="footer-inner">
@@ -224,11 +224,12 @@
   </footer>
 
   <script>
-    // Fallback reveal for browsers without scroll-driven animations
-    // (or with reduced motion); otherwise style.css handles it natively.
-    const nativeReveal = CSS.supports('(animation-timeline: view()) and (animation-range: entry)') &&
-      matchMedia('(prefers-reduced-motion: no-preference)').matches;
-    if (!nativeReveal) {
+    // Fallback reveal for browsers without scroll-driven animations.
+    // style.css hides .reveal/.card-reveal only in this case; with reduced
+    // motion nothing is hidden, so nothing needs revealing.
+    const fallbackReveal = matchMedia('(prefers-reduced-motion: no-preference)').matches &&
+      !CSS.supports('(animation-timeline: view()) and (animation-range: entry)');
+    if (fallbackReveal) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
       }, { threshold: 0.1 });

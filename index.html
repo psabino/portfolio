@@ -30,8 +30,8 @@
           </div>
         </div>
 
-        <nav>
-          <a href="#home" class="active">Work</a>
+        <nav class="nav--spy">
+          <a href="#home">Work</a>
           <a href="#about">About</a>
           <a href="#articles">Articles</a>
           <a href="#contact">Contact</a>
@@ -42,7 +42,7 @@
   </header>
 
   <!-- ABOUT / HERO -->
-  <section class="about-section" id="about">
+  <section class="about-section" id="about" tabindex="-1">
     <div class="container">
       <div class="about-inner">
 
@@ -86,7 +86,7 @@
   </section>
 
   <!-- PROJECTS -->
-  <section class="projects-section" id="home">
+  <section class="projects-section" id="home" tabindex="-1">
     <div class="container">
       <div class="projects-grid">
 
@@ -144,7 +144,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer id="contact">
+  <footer id="contact" tabindex="-1">
     <div class="container">
       <div class="divider"></div>
       <div class="footer-inner">
@@ -167,11 +167,12 @@
   </footer>
 
   <script>
-    // Fallback card reveal for browsers without scroll-driven animations
-    // (or with reduced motion); otherwise style.css handles it natively.
-    const nativeReveal = CSS.supports('(animation-timeline: view()) and (animation-range: entry)') &&
-      matchMedia('(prefers-reduced-motion: no-preference)').matches;
-    if (!nativeReveal) {
+    // Fallback reveal for browsers without scroll-driven animations.
+    // style.css hides .reveal/.card-reveal only in this case; with reduced
+    // motion nothing is hidden, so nothing needs revealing.
+    const fallbackReveal = matchMedia('(prefers-reduced-motion: no-preference)').matches &&
+      !CSS.supports('(animation-timeline: view()) and (animation-range: entry)');
+    if (fallbackReveal) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -180,19 +181,45 @@
       document.querySelectorAll('.card-reveal').forEach(el => observer.observe(el));
     }
 
-    // Smooth nav active state on scroll
-    const sections = document.querySelectorAll('section[id], header');
-    const navLinks = document.querySelectorAll('nav a');
-
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(sec => {
-        if (window.scrollY >= sec.offsetTop - 80) current = sec.id;
-      });
-      navLinks.forEach(a => {
-        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-      });
+    // Scrollspy: mark the nav link whose section is in view.
+    // Links to sections that don't exist on the page are ignored.
+    const spyLinks = [...document.querySelectorAll('.nav--spy a[href^="#"]')]
+      .filter(a => document.getElementById(a.hash.slice(1)));
+    const markCurrent = current => spyLinks.forEach(a => {
+      if (a === current) a.setAttribute('aria-current', 'true');
+      else a.removeAttribute('aria-current');
     });
+
+    if (CSS.supports('scroll-target-group: auto')) {
+      // Native highlight via :target-current (style.css); mirror it for screen readers
+      // :target-current settles slightly after scrollend fires, so read it a moment later
+      const sync = () => setTimeout(() =>
+        markCurrent(document.querySelector('.nav--spy a:target-current')), 150);
+      sync();
+      addEventListener('scrollend', sync);
+    } else {
+      // Fallback: links paired with their sections, in page order
+      const pairs = spyLinks
+        .map(a => [a, document.getElementById(a.hash.slice(1))])
+        .sort(([, x], [, y]) => x.compareDocumentPosition(y) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1);
+      const update = () => {
+        let current = null;
+        pairs.forEach(([a, target]) => {
+          if (target.getBoundingClientRect().top <= 120) current = a;
+        });
+        // A short last section (the footer) can't scroll to the top: pick it at the bottom
+        if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) current = pairs.at(-1)[0];
+        spyLinks.forEach(a => a.classList.toggle('active', a === current));
+        markCurrent(current);
+      };
+      let queued = false;
+      addEventListener('scroll', () => {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(() => { queued = false; update(); });
+      }, { passive: true });
+      update();
+    }
   </script>
 
 </body>
