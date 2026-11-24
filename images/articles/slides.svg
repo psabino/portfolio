@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 40" width="64" height="40">
+  <!-- White tile with a light border so it doesn't vanish on the white page -->
+  <rect x="0.5" y="0.5" width="63" height="39" rx="5.5" fill="#fff" stroke="#E2E2E2" />
+  <!-- Presentation board: outlined pictogram in the site blue -->
+  <g fill="none" stroke="#00AEEF" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19 9.5h26" />
+    <rect x="21" y="9.5" width="22" height="15" rx="1.5" />
+    <path d="M32 24.5v3.5M32 28l-4.5 4M32 28l4.5 4" />
+    <path d="M26 20.5l4-4 3 2.5 5-5" />
+    <path d="M35.5 14h2.5v2.5" />
+  </g>
+</svg>

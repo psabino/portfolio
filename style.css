@@ -249,6 +249,33 @@ nav a.active,
 .cv-list a { color: var(--blue); font-weight: 700; text-decoration: none; }
 .cv-list a:hover { color: color-mix(in srgb, var(--blue), #000 12%); }
 
+/* ─── ARTICLES (articles.html) ───
+   Uses the CV row layout; each entry is a small thumbnail beside its title. */
+.cv--page { padding-top: 64px; }
+.cv--page .cv-row:first-child { border-top: 0; }
+
+.article-list { list-style: none; display: grid; gap: 36px; }
+.article {
+  display: grid;
+  grid-template-columns: 85px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.article-thumb {
+  display: block;
+  width: 85px;
+  aspect-ratio: 64 / 40; /* ~53px tall: the height of the title + description */
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--light-gray);
+}
+.article-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.article-info h3 { font-size: 17px; font-weight: 700; line-height: 1.4; }
+.article-info h3 a { color: var(--dark); text-decoration: none; }
+.article-info h3 a:hover,
+.article:has(.article-thumb:hover) h3 a { color: var(--blue); }
+.article-info p { font-size: 16px; color: var(--dark); line-height: 1.6; margin-top: 4px; max-width: 720px; }
+
 /* ─── PROJECTS SECTION ─── */
 .projects-section {
   padding: 80px 0 0;

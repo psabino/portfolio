@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Articles &amp; Techtalks — Paulo Sabino</title>
+  <meta name="description" content="Articles and tech talks by Paulo Sabino, UI/UX Designer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="top" tabindex="-1">
+    <div class="container">
+      <div class="header-inner fade-up">
+        <a href="index.html" class="header-brand" style="text-decoration:none">
+          <div class="avatar-wrap">
+            <img src="images/profile-picture.png" alt="Paulo Sabino" />
+            <span class="online-dot"></span>
+          </div>
+          <div class="brand-text">
+            <h1>Paulo Sabino</h1>
+            <p>UI/UX Designer</p>
+          </div>
+        </a>
+        <nav>
+          <a href="index.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="articles.html" class="active" aria-current="page">Articles</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- ARTICLES & TECHTALKS (same layout as the About page's Experience section) -->
+  <section class="cv cv--page">
+    <div class="container">
+
+      <div class="cv-row reveal">
+        <h2 class="cv-title">Articles &amp; Techtalks</h2>
+        <ul class="article-list">
+          <li class="article">
+            <!-- Thumbnail repeats the title link, so it's skipped by keyboard and screen readers -->
+            <a class="article-thumb" href="https://medium.com/ux-user-experience-design-em-portugues/7-li%C3%A7%C3%B5es-que-aprendi-como-primeiro-ux-ui-da-braspag-ecd55fa145c2" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+              <img src="images/articles/medium.png" alt="" />
+            </a>
+            <div class="article-info">
+              <h3><a href="https://medium.com/ux-user-experience-design-em-portugues/7-li%C3%A7%C3%B5es-que-aprendi-como-primeiro-ux-ui-da-braspag-ecd55fa145c2" target="_blank" rel="noopener">7 lessons I've learned being the first UX/UI Designer in a company.</a></h3>
+              <p>Medium, UX Collective Brasil - PT-BR</p>
+            </div>
+          </li>
+          <li class="article">
+            <!-- Talk without a link: plain thumbnail, not clickable -->
+            <span class="article-thumb">
+              <img src="images/articles/slides.svg" alt="" />
+            </span>
+            <div class="article-info">
+              <h3>Usability Heuristics in a Game context.</h3>
+              <p>Tech Talk @ Gazeus Games.</p>
+            </div>
+          </li>
+          <li class="article">
+            <!-- Talk without a link: plain thumbnail, not clickable -->
+            <span class="article-thumb">
+              <img src="images/articles/slides.svg" alt="" />
+            </span>
+            <div class="article-info">
+              <h3>UX/UI/AI/IxD - What's the meaning of all these letters?</h3>
+              <p>Tech Talk @ Braspag / Cielo.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact" tabindex="-1">
+    <div class="container">
+      <div class="divider"></div>
+      <div class="footer-inner">
+        <p class="footer-headline">Let's get in touch!</p>
+        <p class="footer-sub">
+          Feel free to send me a message on <a href="https://linkedin.com/in/paulosabino" target="_blank" rel="noopener">Linkedin</a>. 😊
+        </p>
+        <div class="social-row">
+          <a href="https://linkedin.com/in/paulosabino" target="_blank" rel="noopener" title="LinkedIn">
+            <img src="images/social-linkedin.png" alt="LinkedIn" />
+          </a>
+          <a href="https://dribbble.com/neurose" target="_blank" rel="noopener" title="Dribble">
+            <img src="images/social-dribble.png" alt="Social" />
+          </a>
+          <a href="https://www.instagram.com/neurose/" target="_blank" rel="noopener" title="Instagram">
+            <img src="images/social-insta.png" alt="Social" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <a href="#top" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
+  </a>
+
+  <script>
+    // Fallback reveal for browsers without scroll-driven animations.
+    // style.css hides .reveal/.card-reveal only in this case; with reduced
+    // motion nothing is hidden, so nothing needs revealing.
+    const fallbackReveal = matchMedia('(prefers-reduced-motion: no-preference)').matches &&
+      !CSS.supports('(animation-timeline: view()) and (animation-range: entry)');
+    if (fallbackReveal) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    // Back to top: show the button once the page has scrolled one screen height
+    // (a marker placed 100vh down has scrolled above the viewport).
+    const bttSentinel = document.createElement('div');
+    bttSentinel.className = 'back-to-top-sentinel';
+    bttSentinel.setAttribute('aria-hidden', 'true');
+    document.body.append(bttSentinel);
+    new IntersectionObserver(([entry]) => {
+      document.documentElement.classList.toggle('scrolled', entry.boundingClientRect.top < 0);
+    }).observe(bttSentinel);
+  </script>
+
+</body>
+</html>
