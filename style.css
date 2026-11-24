@@ -844,6 +844,22 @@ section { padding: 60px 0; }
 
 .thanks-section a { color: var(--blue); font-weight: 700; font-size: 18px; text-decoration: none; }
 
+/* Other projects: smaller versions of the homepage cards */
+.more-projects {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 260px));
+  justify-content: center;
+  gap: 24px;
+  margin-top: 28px;
+}
+.project-card--mini {
+  display: block;
+  height: auto;
+  aspect-ratio: 544 / 360;
+  border-radius: 12px;
+}
+
 /* ─── DIVIDER ─── */
 .divider {
   height: 1px;
