@@ -625,16 +625,25 @@ section { padding: 60px 0; }
    Rows of a component image beside its name and description (braspag-dash.html). */
 .component-list {
   display: grid;
-  gap: 56px;
+  gap: 80px;
   margin-top: 32px;
 }
 .component-row {
   display: grid;
   grid-template-columns: 3fr 2fr;
   gap: 48px;
-  align-items: center;
+  align-items: start;
+  --reveal-x: -40px; /* scroll reveal slides in from the image's side */
+  --reveal-y: 0;
 }
 .component-row img { width: 100%; height: auto; }
+
+/* Every other row mirrors: description left, image right */
+.component-row:nth-child(even) {
+  grid-template-columns: 2fr 3fr;
+  --reveal-x: 40px;
+}
+.component-row:nth-child(even) img { order: 2; }
 .component-info h3 {
   font-size: 24px;
   font-weight: 700;
@@ -925,8 +934,10 @@ footer {
 @media (prefers-reduced-motion: no-preference) and (scripting: enabled) {
   /* Native: fade/slide in tied to scroll position, no JS */
   @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    /* Slides up by default; set --reveal-x / --reveal-y on an element to
+       change the direction (e.g. .component-row slides in from the side) */
     @keyframes reveal-in {
-      from { opacity: 0; translate: 0 28px; }
+      from { opacity: 0; translate: var(--reveal-x, 0) var(--reveal-y, 28px); }
     }
 
     .reveal,
@@ -943,7 +954,7 @@ footer {
     .reveal,
     .card-reveal {
       opacity: 0;
-      translate: 0 28px;
+      translate: var(--reveal-x, 0) var(--reveal-y, 28px);
       transition: opacity 0.55s ease, translate 0.55s ease;
     }
 
@@ -1051,5 +1062,9 @@ html.scrolled .back-to-top { visibility: visible; opacity: 1; translate: 0; }
   .mockup-phones { flex-wrap: wrap; }
   .screen-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 16px; }
   .cv-row { grid-template-columns: 1fr; }
-  .component-row { grid-template-columns: 1fr; gap: 20px; }
+  /* Stacked on phones: image first, and slide up instead of sideways
+     so nothing pokes past the screen edge */
+  .component-row,
+  .component-row:nth-child(even) { grid-template-columns: 1fr; gap: 20px; --reveal-x: 0; --reveal-y: 28px; }
+  .component-row:nth-child(even) img { order: 0; }
 }
