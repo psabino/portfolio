@@ -215,15 +215,23 @@
             <p>I had a chance to work at the rewards sequence after a match, adding visual effects to the stars and coins gained.</p>
           </div>
         </div>
-        <div class="unity-placeholder">
-          <span>Video coming soon</span>
-        </div>
+        <video
+          class="content-video unity-media"
+          src="images/projects/pp/rewards_sequence.mp4"
+          autoplay muted loop playsinline
+          preload="metadata"
+          aria-label="Rewards sequence animation in Unity"
+        ></video>
       </div>
 
       <div class="unity-row reverse reveal" style="margin-top:48px;">
-        <div class="unity-placeholder">
-          <span>Video coming soon</span>
-        </div>
+        <video
+          class="content-video unity-media"
+          src="images/projects/pp/breadcrumb.mp4"
+          autoplay muted loop playsinline
+          preload="metadata"
+          aria-label="Breadcrumbs animation in Unity"
+        ></video>
         <div class="unity-text">
           <h3 class="section-subtitle">Breadcrumbs</h3>
           <p class="body-text">I've also added small breadcrumbs to get the player's attention towards the next level button, or checking out the Stories progress.</p>
@@ -272,6 +280,21 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Videos: only play while on screen, and never autoplay for people
+    // who ask their system for reduced motion (they get play controls instead).
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('.content-video').forEach(video => {
+      if (reduceMotion) {
+        video.removeAttribute('autoplay');
+        video.pause();
+        video.controls = true;
+        return;
+      }
+      new IntersectionObserver(([entry]) => {
+        entry.isIntersecting ? video.play().catch(() => {}) : video.pause();
+      }, { threshold: 0.25 }).observe(video);
+    });
   </script>
 
 </body>

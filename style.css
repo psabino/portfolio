@@ -538,20 +538,24 @@ section { padding: 60px 0; }
 /* ─── UNITY ─── */
 .unity-section { padding: 60px 0; }
 
+/* Text + portrait video side by side: text takes the space, video a phone-width column */
 .unity-row {
   display: grid;
-  grid-template-columns: 256px 1fr;
+  grid-template-columns: 1fr 256px;
   gap: 48px;
   align-items: start;
   margin-top: 32px;
 }
 
 .unity-row.reverse {
-  grid-template-columns: 1fr 256px;
+  grid-template-columns: 256px 1fr;
 }
 
 .unity-row.reverse .unity-text { order: 2; }
-.unity-row.reverse .unity-placeholder { order: 1; }
+.unity-row.reverse .unity-placeholder,
+.unity-row.reverse .unity-media { order: 1; }
+
+.unity-media { max-width: 256px; } /* stays phone-sized when columns stack on mobile */
 
 .unity-placeholder {
   background: var(--light-gray);
