@@ -401,6 +401,18 @@ section { padding: 60px 0; }
 
 .problem-band .body-text { color: #fff; }
 
+/* ─── COLOR BAND (generic full-width colored section) ───
+   Set the color per section: <section class="color-band" style="--band-color:#281D51"> */
+.color-band {
+  background: var(--band-color, var(--dark));
+  /* 7px less than the 60px bottom: the section title's line box adds ~7px of
+     space above the letters, so this makes the *visible* gaps equal. */
+  padding-top: 53px;
+}
+.color-band .section-title,
+.color-band .section-subtitle,
+.color-band .body-text { color: #fff; }
+
 /* ─── DESIGN PROCESS ─── */
 .process-image {
   width: 100%;
@@ -449,11 +461,10 @@ section { padding: 60px 0; }
   margin-bottom: 40px;
 }
 
-.wf-label { margin-bottom: 12px; }
+
 
 .wf-column--center { justify-self: center; }
-.wf-label strong { font-size: 14px; font-weight: 700; opacity: 0.7; display: block; }
-.wf-label span   { font-size: 14px; font-weight: 300; opacity: 0.7; }
+
 
 /* Image slot — shows a gray placeholder only while it has no image */
 .wf-image {
@@ -549,6 +560,41 @@ section { padding: 60px 0; }
 .unity-placeholder span {
   font-size: 14px;
   color: #aaa;
+}
+
+/* ─── IMAGE CAPTION (title + description label for an image) ───
+   <div class="image-caption"> <strong>Title</strong> <span>Description</span> </div>
+   Dark text by default; add image-caption--light on dark backgrounds. */
+.image-caption {
+  margin: 12px 0;
+  color: var(--dark);
+  font-size: 14px;
+  opacity: 0.7;
+}
+.image-caption:first-child { margin-top: 0; } /* label above an image */
+.image-caption strong { display: block; font-weight: 700; }
+.image-caption span   { font-weight: 300; }
+.image-caption--dark  { color: var(--dark); }
+.image-caption--light { color: #BBB5D3; }
+.image-caption--center { text-align: center; }
+
+/* ─── IMAGE SHADOW (generic drop shadow for content images) ─── */
+/* Defaults below; override per image with CSS variables, e.g.
+   style="--image-shadow: 0 8px 24px #251952; --image-radius: 16px" */
+.image-shadow {
+  border-radius: var(--image-radius, 8px);
+  box-shadow: var(--image-shadow, 0 4px 8px rgba(38, 38, 38, 0.1)); /* #262626 @ 10% */
+}
+
+/* ─── CONTENT VIDEO (full-width video, e.g. animations) ─── */
+/* Cap a low-resolution video at its native width with style="max-width: 812px" */
+.content-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto; /* centers the video when it's capped below the content width */
+  border-radius: 8px;
+  background: var(--light-gray); /* visible until the first frame loads */
 }
 
 /* ─── IMAGE PLACEHOLDER (generic slot for images not added yet) ─── */
