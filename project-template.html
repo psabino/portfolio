@@ -219,8 +219,9 @@
     </div>
   </section>
 
-  <!-- THANKS + other projects: remove this project's own card. The shared
-       view-transition-name makes each card morph into its project's hero -->
+  <!-- THANKS + other projects: these cards are the no-JS fallback (remove this
+       project's own card). js/more-projects.js replaces them with a shuffled pick;
+       add the new project to its PROJECTS list. -->
   <div class="thanks-section reveal">
     <h3>Thanks for reading. ❤️</h3>
     <p>You can also check these projects:</p>
@@ -317,6 +318,9 @@
       }, { threshold: 0.25 }).observe(video);
     });
   </script>
+
+  <!-- Shuffles the "other projects" suggestions on every visit -->
+  <script src="js/more-projects.js" defer></script>
 
 </body>
 </html>
