@@ -809,6 +809,55 @@ footer {
   animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
 }
 
+/* ─── BACK TO TOP ───
+   Floating button, shown once the page has scrolled one screen height.
+   Markup: <a href="#top" class="back-to-top" style="--accent: #00AEEF" …>
+   (target: <header id="top" tabindex="-1">). Set --accent to the page's color;
+   it defaults to --dark. The page script toggles .scrolled on <html>. */
+.back-to-top {
+  position: fixed;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: max(24px, env(safe-area-inset-bottom));
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent, var(--dark));
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(38, 38, 38, 0.25);
+  /* Hidden until the page is scrolled */
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s ease, translate 0.3s ease, background-color 0.2s;
+}
+
+.back-to-top:hover { background: color-mix(in srgb, var(--accent, var(--dark)), #000 20%); }
+.back-to-top:focus-visible { outline: 3px solid var(--accent, var(--dark)); outline-offset: 3px; }
+.back-to-top svg { width: 16px; height: 16px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .back-to-top { translate: 0 12px; } /* slides up as it appears */
+}
+
+html.scrolled .back-to-top { visibility: visible; opacity: 1; translate: 0; }
+
+/* Invisible marker one screen height down; the button shows once it scrolls past */
+.back-to-top-sentinel {
+  position: absolute;
+  top: 100vh;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+/* Without JavaScript, just keep it visible */
+@media (scripting: none) {
+  .back-to-top { visibility: visible; opacity: 1; translate: 0; }
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
   .about-inner {
