@@ -1059,8 +1059,8 @@ footer {
   z-index: 50;
   display: grid;
   place-items: center;
-  width: 36px;
-  height: 36px;
+  width: 44px; /* Apple's minimum tap target */
+  height: 44px;
   border-radius: 50%;
   background: var(--accent, var(--dark));
   color: var(--accent-contrast, #fff);
@@ -1073,7 +1073,7 @@ footer {
 
 .back-to-top:hover { background: color-mix(in srgb, var(--accent, var(--dark)), #000 12%); }
 .back-to-top:focus-visible { outline: 3px solid var(--accent, var(--dark)); outline-offset: 3px; }
-.back-to-top svg { width: 16px; height: 16px; }
+.back-to-top svg { width: 20px; height: 20px; }
 
 @media (prefers-reduced-motion: no-preference) {
   .back-to-top { translate: 0 12px; } /* slides up as it appears */
@@ -1104,16 +1104,36 @@ html.scrolled .back-to-top { visibility: visible; opacity: 1; translate: 0; }
   .about-photo {
     display: none;
   }
+  .about-content { padding-left: 0; } /* line up with the name and nav */
+  /* Tools: all icons share one row, shrinking to fit (never above 40px) */
+  .tool-icons { flex-wrap: nowrap; gap: 12px; }
+  .tool-icons img { flex: 1 1 0; min-width: 0; max-width: 40px; width: auto; height: auto; aspect-ratio: 1; }
   .projects-grid {
     grid-template-columns: 1fr;
   }
-  nav {
-    display: none;
-  }
+  /* 1. Nav: links move to their own row under the name instead of hiding */
+  .header-inner { flex-wrap: wrap; row-gap: 20px; }
+  nav { width: 100%; gap: 28px; }
+
+  /* 2. Project cards keep the thumbnails' shape (544×360) so nothing is cropped */
+  .project-card { height: auto; aspect-ratio: 544 / 360; }
 
   /* case study pages */
   .overview-grid, .benchmark-grid, .unity-row, .unity-row.reverse, .wireframe-columns, .stories-row { grid-template-columns: 1fr; }
-  .hero-phones { height: 420px; }
+  /* 3. Heroes: tighter title with side margins, and bigger art. The art is
+     wider than the screen and centered, so the hero's overflow trims its
+     sides and the middle phone/screen gets most of the width. */
+  .hero-title { margin-top: 64px; padding-inline: 20px; }
+  .hero-title h2 { font-size: 32px; }
+  .hero-title p { font-size: 18px; }
+  .hero-phones { width: 150%; max-width: none; margin-top: 28px; }
+  .hero-phones > img { display: block; width: 100%; height: auto; }
+  .hero-phones.hero-screens { width: 140%; max-width: none; }
+  .hero-phones.hero-art { width: 100%; }
+  .hero-art img { translate: 0 0; } /* the desktop nudge would cover the subtitle */
+
+  /* 4. Role card: drop the desktop indent so it lines up with the Overview */
+  .role { margin-left: 0; }
   .phone-left, .phone-right { display: none; }
   .phone-center { width: 240px; height: 520px; }
   .mockup-phones { flex-wrap: wrap; }
