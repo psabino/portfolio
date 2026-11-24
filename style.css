@@ -621,6 +621,32 @@ section { padding: 60px 0; }
   height: auto;
 }
 
+/* ─── COMPONENT LIST ───
+   Rows of a component image beside its name and description (braspag-dash.html). */
+.component-list {
+  display: grid;
+  gap: 56px;
+  margin-top: 32px;
+}
+.component-row {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 48px;
+  align-items: center;
+}
+.component-row img { width: 100%; height: auto; }
+.component-info h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+.component-info p {
+  font-size: 18px;
+  color: var(--dark);
+  line-height: 1.65;
+}
+
 /* ─── SCREEN GRID ───
    Rows of same-sized phone screens. Set the columns per grid with style="--cols: 4".
    Add .screen-grid--wireframe for gray-bordered lo-fi screens. */
@@ -1025,4 +1051,5 @@ html.scrolled .back-to-top { visibility: visible; opacity: 1; translate: 0; }
   .mockup-phones { flex-wrap: wrap; }
   .screen-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 16px; }
   .cv-row { grid-template-columns: 1fr; }
+  .component-row { grid-template-columns: 1fr; gap: 20px; }
 }
