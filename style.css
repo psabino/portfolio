@@ -597,6 +597,9 @@ section { padding: 60px 0; }
   box-shadow: var(--image-shadow, 0 4px 8px rgba(38, 38, 38, 0.1)); /* #262626 @ 10% */
 }
 
+/* Centers a block image narrower than its container */
+.image-center { margin-inline: auto; }
+
 /* ─── CONTENT VIDEO (full-width video, e.g. animations) ─── */
 /* Cap a low-resolution video at its native width with style="max-width: 812px" */
 .content-video {
