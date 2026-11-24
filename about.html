@@ -156,6 +156,35 @@
     </div>
   </section>
 
+  <!-- PROJECTS (cards are the no-JS fallback; js/more-projects.js shuffles them) -->
+  <section class="cv cv--more">
+    <div class="container">
+      <div class="cv-row reveal">
+        <div>
+          <h2 class="cv-title">Other projects</h2>
+          <p class="cv-subtitle">Don't forget to check these out :)</p>
+        </div>
+        <ul class="more-projects more-projects--row">
+          <li>
+            <a class="project-card project-card--mini shadow-blue" href="paw-puzzles.html" style="view-transition-name: project-pp">
+              <img src="images/thumb-pp.png" alt="Paw Puzzles" loading="lazy" />
+            </a>
+          </li>
+          <li>
+            <a class="project-card project-card--mini shadow-purple" href="poker-nights.html" style="view-transition-name: project-pn">
+              <img src="images/thumb-poker.png" alt="Poker Nights" loading="lazy" />
+            </a>
+          </li>
+          <li>
+            <a class="project-card project-card--mini shadow-pink" href="fashion-match.html" style="view-transition-name: project-fm">
+              <img src="images/thumb-fashion.png" alt="Fashion Match" loading="lazy" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer id="contact" tabindex="-1">
     <div class="container">
@@ -210,6 +239,9 @@
       document.documentElement.classList.toggle('scrolled', entry.boundingClientRect.top < 0);
     }).observe(bttSentinel);
   </script>
+
+  <!-- Shuffles the project suggestions on every visit -->
+  <script src="js/more-projects.js" defer></script>
 
 </body>
 </html>

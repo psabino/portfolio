@@ -895,6 +895,12 @@ section { padding: 60px 0; }
   border-radius: 12px;
 }
 
+/* As a CV row (About and Articles pages): title on the left, cards on the right */
+.cv--more { padding-top: 32px; }            /* ~104px from the section above */
+.cv--more .cv-row { border-top: 0; }
+.cv-subtitle { font-size: 15px; font-weight: 300; color: var(--dark); margin-top: 4px; }
+.more-projects--row { grid-template-columns: repeat(3, minmax(0, 1fr)); justify-content: start; margin-top: 0; }
+
 /* ─── DIVIDER ─── */
 .divider {
   height: 1px;
@@ -1113,6 +1119,7 @@ html.scrolled .back-to-top { visibility: visible; opacity: 1; translate: 0; }
   .mockup-phones { flex-wrap: wrap; }
   .screen-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 16px; }
   .cv-row { grid-template-columns: 1fr; }
+  .more-projects--row { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
   /* Stacked on phones: image first, and slide up instead of sideways
      so nothing pokes past the screen edge */
   .component-row,
