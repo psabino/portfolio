@@ -351,6 +351,45 @@ nav a.active,
 .phone-center{ width: 325px; height: 700px; left: 50%; transform: translateX(-50%); bottom: 0; }
 .phone-right { width: 265px; height: 574px; right: calc(50% - 304px - 132px); }
 
+/* Three desktop screens: a large one in front, two smaller ones peeking out
+   behind it. The hero's bottom edge clips them all, like a mask.
+   Usage: <div class="hero-phones hero-screens"><div class="hero-screens-stage">
+   with three .hero-screen images inside. */
+.hero-phones.hero-screens {
+  width: calc(100% - 32px);
+  max-width: 1024px; /* scales all three screens together */
+  height: auto;
+  /* Same hero height as Paw Puzzles (its 1440×615 header at up to 1120px wide);
+     extra space goes above the screens, which stay anchored to the bottom */
+  min-height: min(478px, 42.7vw);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.hero-screens-stage { position: relative; }
+
+.hero-screen--center {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 68.75%;
+  margin-inline: auto;
+  translate: 0 16px; /* pushed down; the bottom 16px is hidden by the hero */
+}
+
+.hero-screen--left,
+.hero-screen--right {
+  position: absolute;
+  top: 20%;
+  height: calc(80% + 16px); /* reach the hero's bottom edge, like the center screen */
+  width: 50%;
+  object-fit: cover;
+  object-position: top;
+}
+.hero-screen--left  { left: 0; }
+.hero-screen--right { right: 0; }
+
 /* ─── SECTION BASE ─── */
 section { padding: 60px 0; }
 
