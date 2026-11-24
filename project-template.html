@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<!--
+  PROJECT PAGE TEMPLATE — copy this file to <project-slug>.html and fill it in.
+
+  - Images go in images/projects/<slug>/ (e.g. images/projects/bd/)
+  - Delete any section the project doesn't need; every section is self-contained.
+  - Hero gradient: set --hero-color on .hero (or use .hero--blue / .hero--purple).
+  - Page transition: give the hero and its homepage card the same
+    view-transition-name (e.g. project-<slug>) so the card morphs into the hero.
+  - Images with a shadow: class="image-shadow", tuned per image with
+    style="--image-shadow: 0 8px 24px #251952; --image-radius: 8px;"
+    (match --image-radius to rounded corners baked into the image, as % of width / height).
+  - Colored sections: class="color-band" style="--band-color: #281D51" (text turns white).
+  - Remove the noindex meta tag below when publishing a real project page.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Project Name — Paulo Sabino</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="header-inner fade-up">
+        <a href="index.html" class="header-brand" style="text-decoration:none">
+          <div class="avatar-wrap">
+            <img src="images/profile-picture.png" alt="Paulo Sabino" />
+            <span class="online-dot"></span>
+          </div>
+          <div class="brand-text">
+            <h1>Paulo Sabino</h1>
+            <p>UI/UX Designer</p>
+          </div>
+        </a>
+        <nav>
+          <a href="index.html" class="active" aria-current="true">Work</a>
+          <a href="index.html#about">About</a>
+          <a href="#">Articles</a>
+          <a href="#contact">Contact</a>
+          <a href="#">Resumé</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero" style="--hero-color: #3fe6fe; view-transition-name: project-slug">
+    <div class="hero-title fade-up">
+      <h2>Project Name</h2>
+      <p>One-line project description</p>
+    </div>
+
+    <div class="hero-phones">
+      <!-- Replace with: <img src="images/projects/slug/hero.png" alt="" /> -->
+      <div class="image-placeholder">Hero image</div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW + ROLE -->
+  <section>
+    <div class="container">
+      <div class="overview-grid reveal">
+        <div class="overview">
+          <h2 class="section-title">Overview</h2>
+          <div class="body-text">
+            <p>Short summary of the project and what you worked on.</p>
+          </div>
+        </div>
+        <div class="role">
+          <h2 class="section-title">Role</h2>
+          <div class="role-card">
+            <!-- Company logo: <img src="images/projects/slug/company-logo.png" alt="Company" /> -->
+            <div class="role-info">
+              <strong>Role Title</strong>
+              <p>Company</p>
+              <p>City - Country (On-site / Remote)</p>
+              <p>Mon - Mon YYYY</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE PROBLEM -->
+  <div class="problem-band reveal">
+    <div class="container">
+      <h2 class="section-title">The Problem</h2>
+      <p class="body-text">Describe the problem or context the project addressed.</p>
+    </div>
+  </div>
+
+  <!-- DESIGN PROCESS (colored band) -->
+  <section class="color-band" style="--band-color: #281D51">
+    <div class="container">
+      <h2 class="section-title reveal">Design Process</h2>
+      <!-- Replace with: <img class="process-image reveal" src="images/projects/slug/process.png" alt="Design process: step 1, then step 2, ..." /> -->
+      <div class="image-placeholder reveal">Design process diagram</div>
+    </div>
+  </section>
+
+  <!-- RESEARCH (text + image side by side) -->
+  <div class="benchmark-band">
+    <div class="container">
+      <h2 class="section-title reveal">Research</h2>
+      <div class="benchmark-grid reveal">
+        <div class="body-text">
+          <p>Describe the research approach and key findings:</p>
+          <ul>
+            <li><strong>Finding one:</strong> Details.</li>
+            <li><strong>Finding two:</strong> Details.</li>
+          </ul>
+        </div>
+        <div>
+          <!-- Replace with: <img class="image-shadow" src="images/projects/slug/research.png" alt="..." /> -->
+          <div class="image-placeholder">Research image</div>
+          <p class="caption">Image caption</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BENCHMARK (single centered image + text below) -->
+  <section>
+    <div class="container">
+      <h2 class="section-title reveal">Benchmark</h2>
+      <!-- Replace with: <img class="image-shadow image-center reveal" src="images/projects/slug/benchmark.png" alt="..." /> -->
+      <div class="image-placeholder reveal">Benchmark image</div>
+      <div class="body-text reveal" style="margin-top:32px">
+        <p>Describe what the benchmark showed and the direction it led to.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WIREFRAMES: three options side by side.
+       For a single wide image instead, replace .wireframe-columns with:
+       <img class="image-shadow reveal" src="images/projects/slug/wireframe.png" alt="..." /> -->
+  <section class="wireframe-section">
+    <div class="container">
+      <h2 class="section-title reveal">Wireframe Exploration</h2>
+      <h3 class="section-subtitle reveal">Feature Name</h3>
+
+      <div class="wireframe-columns reveal">
+        <div class="wf-column">
+          <div class="image-caption">
+            <strong>Option A</strong>
+            <span>Short description</span>
+          </div>
+          <div class="image-placeholder">Wireframe A</div>
+        </div>
+        <div class="wf-column wf-column--center">
+          <div class="image-caption">
+            <strong>Option B</strong>
+            <span>Short description</span>
+          </div>
+          <!-- Centered column shrinks to its content; real images size it themselves -->
+          <div class="image-placeholder" style="width:240px">Wireframe B</div>
+        </div>
+        <div class="wf-column">
+          <div class="image-caption">
+            <strong>Option C</strong>
+            <span>Short description</span>
+          </div>
+          <div class="image-placeholder">Wireframe C</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL MOCKUPS (colored band, captioned images) -->
+  <section class="color-band" style="--band-color: #554592">
+    <div class="container">
+      <h2 class="section-title reveal">Final Mockups</h2>
+      <p class="image-caption image-caption--light image-caption--center reveal">
+        <strong>Screen Name</strong>
+        <span>Short description</span>
+      </p>
+      <!-- Replace with:
+           <img class="image-shadow reveal" style="--image-shadow: 0 8px 24px #251952;"
+                src="images/projects/slug/mockup1.png" alt="..." /> -->
+      <div class="image-placeholder reveal">Mockup 1</div>
+    </div>
+  </section>
+
+  <!-- GALLERY (stack of full-width images, e.g. components or screens) -->
+  <section>
+    <div class="container">
+      <h2 class="section-title reveal">Gallery Title</h2>
+      <h3 class="section-subtitle reveal">Optional subtitle</h3>
+      <div class="image-stack">
+        <!-- One per image: <img class="image-shadow reveal" src="images/projects/slug/screen-1.png" alt="..." /> -->
+        <div class="image-placeholder reveal" style="width:100%">Image 1</div>
+        <div class="image-placeholder reveal" style="width:100%">Image 2</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO / ANIMATION
+       Export: H.264 MP4, 2x the display size, Web Optimized (fast start), no audio.
+       If the video is smaller than the content width, cap it: style="max-width: 812px" -->
+  <section>
+    <div class="container">
+      <h2 class="section-title reveal">Animation Title</h2>
+      <!-- Replace with:
+           <video class="content-video reveal" src="images/projects/slug/animation.mp4"
+                  autoplay muted loop playsinline preload="metadata"
+                  aria-label="Describe the animation"></video> -->
+      <div class="image-placeholder reveal">Video</div>
+    </div>
+  </section>
+
+  <!-- THANKS -->
+  <div class="thanks-section reveal">
+    <h3>Thanks for reading. ❤️</h3>
+    <p>
+      <span style="font-weight:300">You can check other projects </span>
+      <a href="index.html">here</a>
+      <span style="font-weight:300">.</span>
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="contact" tabindex="-1">
+    <div class="container">
+      <div class="divider"></div>
+      <div class="footer-inner">
+        <p class="footer-headline">Let's get in touch!</p>
+        <p class="footer-sub">
+          Feel free to send me a message on <a href="https://linkedin.com/in/paulosabino" target="_blank" rel="noopener">Linkedin</a>. 😊
+        </p>
+        <div class="social-row">
+          <a href="https://linkedin.com/in/paulosabino" target="_blank" rel="noopener" title="LinkedIn">
+            <img src="images/social-linkedin.png" alt="LinkedIn" />
+          </a>
+          <a href="https://dribbble.com/neurose" target="_blank" rel="noopener" title="Dribble">
+            <img src="images/social-dribble.png" alt="Social" />
+          </a>
+          <a href="https://www.instagram.com/neurose/" target="_blank" rel="noopener" title="Instagram">
+            <img src="images/social-insta.png" alt="Social" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Fallback reveal for browsers without scroll-driven animations.
+    // style.css hides .reveal/.card-reveal only in this case; with reduced
+    // motion nothing is hidden, so nothing needs revealing.
+    const fallbackReveal = matchMedia('(prefers-reduced-motion: no-preference)').matches &&
+      !CSS.supports('(animation-timeline: view()) and (animation-range: entry)');
+    if (fallbackReveal) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    // Videos: only play while on screen, and never autoplay for people
+    // who ask their system for reduced motion (they get play controls instead).
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('.content-video').forEach(video => {
+      if (reduceMotion) {
+        video.removeAttribute('autoplay');
+        video.pause();
+        video.controls = true;
+        return;
+      }
+      new IntersectionObserver(([entry]) => {
+        entry.isIntersecting ? video.play().catch(() => {}) : video.pause();
+      }, { threshold: 0.25 }).observe(video);
+    });
+  </script>
+
+</body>
+</html>

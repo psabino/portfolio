@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Braspag Dash — Paulo Sabino</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="header-inner fade-up">
+        <a href="index.html" class="header-brand" style="text-decoration:none">
+          <div class="avatar-wrap">
+            <img src="images/profile-picture.png" alt="Paulo Sabino" />
+            <span class="online-dot"></span>
+          </div>
+          <div class="brand-text">
+            <h1>Paulo Sabino</h1>
+            <p>UI/UX Designer</p>
+          </div>
+        </a>
+        <nav>
+          <a href="index.html" class="active" aria-current="true">Work</a>
+          <a href="index.html#about">About</a>
+          <a href="#">Articles</a>
+          <a href="#contact">Contact</a>
+          <a href="#">Resumé</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <!-- To morph from a homepage card, give that card style="view-transition-name: project-bd" -->
+  <div class="hero" style="--hero-color: #00AEEF; view-transition-name: project-bd">
+    <div class="hero-title fade-up">
+      <h2>Braspag Dash</h2>
+      <p>A Design System for Braspag's dashboards</p>
+    </div>
+
+    <div class="hero-phones">
+      <img
+        class="image-shadow image-center"
+        style="max-width: 960px"
+        src="images/projects/bd/split-1.png"
+        alt="Braspag Split dashboard built with Braspag Dash: sales summary cards and a comparison chart"
+      />
+    </div>
+  </div>
+
+  <!-- OVERVIEW + ROLE -->
+  <section>
+    <div class="container">
+      <div class="overview-grid reveal">
+        <div class="overview">
+          <h2 class="section-title">Overview</h2>
+          <div class="body-text">
+            <p>I decided to create a Design System for the dashboards, defining our identity across all products. I adopted the <a href="https://atomicdesign.bradfrost.com/table-of-contents/" target="_blank" rel="noopener">Atomic Design System methodology</a> to create the hierarchy and its elements.</p>
+            <p>In addition to the visual and usability improvements, all the components developed were reused in other products, creating a standard and maintaining consistency across the entire ecosystem.</p>
+            <p>This way, a design and frontend team could provide the entire interface, while the product teams could focus on backend improvements and bug fixes.</p>
+          </div>
+        </div>
+        <div class="role">
+          <h2 class="section-title">Role</h2>
+          <div class="role-card">
+            <!-- Company logo: <img src="images/projects/bd/company-logo.png" alt="Braspag" /> -->
+            <div class="role-info">
+              <!-- TODO: confirm role title, location and dates -->
+              <strong>UI/UX Designer</strong>
+              <p>Braspag</p>
+              <p>2018</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE PROBLEM -->
+  <div class="problem-band reveal">
+    <div class="container">
+      <h2 class="section-title">The Problem</h2>
+      <p class="body-text">The lack of identity for Braspag's products was a major challenge. Each project had a different interface, created by third-party companies, and which did not follow a visual standard aligned with the brand.</p>
+    </div>
+  </div>
+
+  <!-- COMPONENTS LIBRARY -->
+  <section>
+    <div class="container">
+      <h2 class="section-title reveal">Components Library</h2>
+      <div class="image-stack">
+        <img class="image-shadow reveal" src="images/projects/bd/components-1.png" alt="Buttons: primary and secondary actions in normal, hover, pressed and disabled states, plus positive and negative actions" />
+        <img class="image-shadow reveal" src="images/projects/bd/components-2.png" alt="Text inputs: default, active, disabled, error, success and warning states, and inputs with calendar, percentage and search icons" />
+        <img class="image-shadow reveal" src="images/projects/bd/components-3.png" alt="Alerts: primary, secondary, dark, success, error, warning and with icon" />
+        <img class="image-shadow reveal" src="images/projects/bd/components-4.png" alt="Tables: table header and table rows" />
+        <img class="image-shadow reveal" src="images/projects/bd/components-5.png" alt="Icon set for navigation and status, referenced from FontAwesome Pro 5.1.0" />
+        <img class="image-shadow reveal" src="images/projects/bd/components-6.png" alt="Featured illustrations: wallets, price tags, branding, components, design, message, success and expired link" />
+        <img class="image-shadow reveal" src="images/projects/bd/components-7.png" alt="Switches: yes/no questions and on/off options" />
+        <img class="image-shadow reveal" src="images/projects/bd/components-8.png" alt="Tooltips: error, informative light and informative dark" />
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCUMENTATION -->
+  <section class="color-band" style="--band-color: #00AEEF">
+    <div class="container">
+      <h2 class="section-title reveal">Documentation</h2>
+      <img
+        class="image-shadow reveal"
+        style="--image-shadow: 0 8px 24px rgba(0, 60, 90, 0.35)"
+        src="images/projects/bd/documentation.png"
+        alt="Braspag Dash documentation site: branding, design and components sections, latest updates and roadmap"
+      />
+    </div>
+  </section>
+
+  <!-- PROJECT EXAMPLE -->
+  <section>
+    <div class="container">
+      <h2 class="section-title reveal">Split Payment System</h2>
+      <h3 class="section-subtitle reveal">Project Example</h3>
+      <div class="image-stack">
+        <img class="image-shadow reveal" src="images/projects/bd/split-1.png" alt="Braspag Split dashboard: what was sold, received and will be received, with a comparison chart" />
+        <img class="image-shadow reveal" src="images/projects/bd/split-2.png" alt="Braspag Split financial schedule: balance cards, calendar and daily history of incoming and outgoing transactions" />
+        <img class="image-shadow reveal" src="images/projects/bd/split-3.png" alt="Braspag Split transaction details: transaction info, gross and net value, status timeline and split between sellers" />
+        <img class="image-shadow reveal" src="images/projects/bd/split-4.png" alt="Braspag Split sales: balance, total transactions and daily sales history with status" />
+      </div>
+    </div>
+  </section>
+
+  <!-- THANKS -->
+  <div class="thanks-section reveal">
+    <h3>Thanks for reading. ❤️</h3>
+    <p>
+      <span style="font-weight:300">You can check other projects </span>
+      <a href="index.html">here</a>
+      <span style="font-weight:300">.</span>
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="contact" tabindex="-1">
+    <div class="container">
+      <div class="divider"></div>
+      <div class="footer-inner">
+        <p class="footer-headline">Let's get in touch!</p>
+        <p class="footer-sub">
+          Feel free to send me a message on <a href="https://linkedin.com/in/paulosabino" target="_blank" rel="noopener">Linkedin</a>. 😊
+        </p>
+        <div class="social-row">
+          <a href="https://linkedin.com/in/paulosabino" target="_blank" rel="noopener" title="LinkedIn">
+            <img src="images/social-linkedin.png" alt="LinkedIn" />
+          </a>
+          <a href="https://dribbble.com/neurose" target="_blank" rel="noopener" title="Dribble">
+            <img src="images/social-dribble.png" alt="Social" />
+          </a>
+          <a href="https://www.instagram.com/neurose/" target="_blank" rel="noopener" title="Instagram">
+            <img src="images/social-insta.png" alt="Social" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Fallback reveal for browsers without scroll-driven animations.
+    // style.css hides .reveal/.card-reveal only in this case; with reduced
+    // motion nothing is hidden, so nothing needs revealing.
+    const fallbackReveal = matchMedia('(prefers-reduced-motion: no-preference)').matches &&
+      !CSS.supports('(animation-timeline: view()) and (animation-range: entry)');
+    if (fallbackReveal) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+  </script>
+
+</body>
+</html>

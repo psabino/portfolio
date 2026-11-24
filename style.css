@@ -616,6 +616,14 @@ section { padding: 60px 0; }
 /* Centers a block image narrower than its container */
 .image-center { margin-inline: auto; }
 
+/* Vertical gallery of full-width images (e.g. component sheets, screens) */
+.image-stack {
+  display: grid;
+  gap: 40px;
+  justify-items: center;
+  margin-top: 32px;
+}
+
 /* ─── CONTENT VIDEO (full-width video, e.g. animations) ─── */
 /* Cap a low-resolution video at its native width with style="max-width: 812px" */
 .content-video {
