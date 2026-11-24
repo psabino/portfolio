@@ -27,7 +27,7 @@
 <body>
 
   <!-- HEADER -->
-  <header>
+  <header id="top" tabindex="-1">
     <div class="container">
       <div class="header-inner fade-up">
         <a href="index.html" class="header-brand" style="text-decoration:none">
@@ -251,6 +251,14 @@
     </div>
   </footer>
 
+  <!-- BACK TO TOP: set the page color with style="--accent: #hex".
+       For a light accent, also set a dark arrow: --accent-contrast: #hex (needs 3:1 contrast). -->
+  <a href="#top" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
+  </a>
+
   <script>
     // Fallback reveal for browsers without scroll-driven animations.
     // style.css hides .reveal/.card-reveal only in this case; with reduced
@@ -263,6 +271,16 @@
       }, { threshold: 0.1 });
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     }
+
+    // Back to top: show the button once the page has scrolled one screen height
+    // (a marker placed 100vh down has scrolled above the viewport).
+    const bttSentinel = document.createElement('div');
+    bttSentinel.className = 'back-to-top-sentinel';
+    bttSentinel.setAttribute('aria-hidden', 'true');
+    document.body.append(bttSentinel);
+    new IntersectionObserver(([entry]) => {
+      document.documentElement.classList.toggle('scrolled', entry.boundingClientRect.top < 0);
+    }).observe(bttSentinel);
 
     // Videos: only play while on screen, and never autoplay for people
     // who ask their system for reduced motion (they get play controls instead).

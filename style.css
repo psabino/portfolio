@@ -811,9 +811,11 @@ footer {
 
 /* ─── BACK TO TOP ───
    Floating button, shown once the page has scrolled one screen height.
-   Markup: <a href="#top" class="back-to-top" style="--accent: #00AEEF" …>
-   (target: <header id="top" tabindex="-1">). Set --accent to the page's color;
-   it defaults to --dark. The page script toggles .scrolled on <html>. */
+   Markup: <a href="#top" class="back-to-top" style="--accent: #00AEEF; --accent-contrast: #003D5C" …>
+   (target: <header id="top" tabindex="-1">). --accent is the page's color
+   (default --dark); --accent-contrast is the arrow color (default white) and
+   must reach 3:1 against --accent and its hover shade.
+   The page script toggles .scrolled on <html>. */
 .back-to-top {
   position: fixed;
   right: max(24px, env(safe-area-inset-right));
@@ -825,7 +827,7 @@ footer {
   height: 36px;
   border-radius: 50%;
   background: var(--accent, var(--dark));
-  color: #fff;
+  color: var(--accent-contrast, #fff);
   box-shadow: 0 4px 12px rgba(38, 38, 38, 0.25);
   /* Hidden until the page is scrolled */
   visibility: hidden;
@@ -833,7 +835,7 @@ footer {
   transition: visibility 0.3s, opacity 0.3s ease, translate 0.3s ease, background-color 0.2s;
 }
 
-.back-to-top:hover { background: color-mix(in srgb, var(--accent, var(--dark)), #000 20%); }
+.back-to-top:hover { background: color-mix(in srgb, var(--accent, var(--dark)), #000 12%); }
 .back-to-top:focus-visible { outline: 3px solid var(--accent, var(--dark)); outline-offset: 3px; }
 .back-to-top svg { width: 16px; height: 16px; }
 
