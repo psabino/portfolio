@@ -436,7 +436,7 @@ nav a.active,
    to 1120px wide). The art overflows the box and the hero's bottom edge masks it,
    like the Braspag Dash screens. */
 .hero-phones.hero-art { height: min(478px, 42.7vw); }
-.hero-art img { display: block; width: 100%; height: auto; }
+.hero-art img { display: block; width: 100%; height: auto; translate: 0 -64px; } /* nudged up; the box (and hero height) stays the same */
 
 /* ─── SECTION BASE ─── */
 section { padding: 60px 0; }
