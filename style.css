@@ -270,6 +270,14 @@ nav a.active,
   background: var(--light-gray);
 }
 .article-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Icon on a white tile (e.g. social network logos) */
+.article-thumb--icon {
+  display: grid;
+  place-items: center;
+  background: #fff;
+  border: 1px solid #E2E2E2;
+}
+.article-thumb--icon img { width: 28px; height: 28px; object-fit: contain; }
 .article-info h3 { font-size: 17px; font-weight: 700; line-height: 1.4; }
 .article-info h3 a { color: var(--dark); text-decoration: none; }
 .article-info h3 a:hover,
