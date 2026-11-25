@@ -11,6 +11,10 @@
   <link rel="icon" href="/images/icons/icon-512.png" type="image/png" sizes="512x512" />
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" />
   <link rel="stylesheet" href="/css/style.css" />
+  <!-- Profile photo flip: preload this page's picture, prefetch the other page's -->
+  <link rel="preload" href="/images/hero-profile-photo.webp" as="image" />
+  <link rel="prefetch" href="/images/profile-3d.webp" as="image" />
+  <script src="/js/photo-flip.js"></script>
 </head>
 <body>
 
@@ -50,7 +54,7 @@
 
         <div class="about-photo fade-up">
           <img
-            src="/images/hero-profile-photo.png"
+            src="/images/hero-profile-photo.webp"
             alt="Paulo Sabino"
             onerror="this.style.display='none'"
           />

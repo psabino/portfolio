@@ -29,8 +29,6 @@ if (list) {
     const a = document.createElement('a');
     a.className = `project-card project-card--mini ${p.glow}`;
     a.href = p.href;
-    // Same name as the project's hero, so the card morphs into it
-    a.style.viewTransitionName = `project-${p.code}`;
     const img = document.createElement('img');
     img.src = p.thumb;
     img.alt = p.name;
@@ -40,3 +38,20 @@ if (list) {
     return li;
   }));
 }
+
+// The clicked card morphs into the case study hero: just before leaving for a
+// project, give its card the hero's view-transition-name. Cards have no names
+// otherwise, so swapping them above (which can run mid page transition when
+// the script loads late) never changes the transition's named elements;
+// Chrome cancels a transition when those change.
+addEventListener('pageswap', e => {
+  const to = e.viewTransition && e.activation?.entry?.url;
+  if (!to) return;
+  const project = PROJECTS.find(p => p.href === new URL(to).pathname);
+  const card = project && document.querySelector(`.more-projects a[href="${project.href}"]`);
+  if (card) card.style.viewTransitionName = `project-${project.code}`;
+});
+// Coming back via the back/forward cache: clear the name again
+addEventListener('pageshow', () => {
+  document.querySelectorAll('.more-projects a').forEach(a => { a.style.viewTransitionName = ''; });
+});

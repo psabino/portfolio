@@ -1058,6 +1058,27 @@ footer {
   animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
 }
 
+/* Profile photo: the photo on Work and the 3D avatar on About sit in the same
+   spot, so navigating between the two flips it like a card. The old picture
+   turns away, then the new one turns in. */
+.about-photo img { view-transition-name: profile-photo; }
+
+::view-transition-group(profile-photo) { animation-duration: 0.6s; }
+::view-transition-old(profile-photo) {
+  animation: photo-flip-out 0.3s ease-in forwards;
+}
+::view-transition-new(profile-photo) {
+  animation: photo-flip-in 0.3s 0.3s ease-out backwards;
+}
+@keyframes photo-flip-out {
+  from { transform: perspective(1200px) rotateY(0); }
+  to   { transform: perspective(1200px) rotateY(90deg); }
+}
+@keyframes photo-flip-in {
+  from { transform: perspective(1200px) rotateY(-90deg); }
+  to   { transform: perspective(1200px) rotateY(0); }
+}
+
 /* ─── BACK TO TOP ───
    Floating button, shown once the page has scrolled one screen height.
    Markup: <a href="#top" class="back-to-top" style="--accent: #00AEEF; --accent-contrast: #003D5C" …>

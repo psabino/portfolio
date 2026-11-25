@@ -12,6 +12,10 @@
   <link rel="icon" href="/images/icons/icon-512.png" type="image/png" sizes="512x512" />
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" />
   <link rel="stylesheet" href="/css/style.css" />
+  <!-- Profile photo flip: preload this page's picture, prefetch the other page's -->
+  <link rel="preload" href="/images/profile-3d.webp" as="image" />
+  <link rel="prefetch" href="/images/hero-profile-photo.webp" as="image" />
+  <script src="/js/photo-flip.js"></script>
 </head>
 <body>
 
@@ -45,7 +49,7 @@
       <div class="about-inner">
 
         <div class="about-photo fade-up">
-          <img src="/images/hero-profile-photo.png" alt="Paulo Sabino" />
+          <img src="/images/profile-3d.webp" alt="Paulo Sabino" />
         </div>
 
         <div class="about-content">
@@ -169,17 +173,17 @@
         </div>
         <ul class="more-projects more-projects--row">
           <li>
-            <a class="project-card project-card--mini shadow-blue" href="/work/paw-puzzles/" style="view-transition-name: project-pp">
+            <a class="project-card project-card--mini shadow-blue" href="/work/paw-puzzles/">
               <img src="/images/thumbs/paw-puzzles.png" alt="Paw Puzzles" loading="lazy" />
             </a>
           </li>
           <li>
-            <a class="project-card project-card--mini shadow-purple" href="/work/poker-nights/" style="view-transition-name: project-pn">
+            <a class="project-card project-card--mini shadow-purple" href="/work/poker-nights/">
               <img src="/images/thumbs/poker-nights.png" alt="Poker Nights" loading="lazy" />
             </a>
           </li>
           <li>
-            <a class="project-card project-card--mini shadow-pink" href="/work/fashion-match/" style="view-transition-name: project-fm">
+            <a class="project-card project-card--mini shadow-pink" href="/work/fashion-match/">
               <img src="/images/thumbs/fashion-match.png" alt="Fashion Match" loading="lazy" />
             </a>
           </li>
