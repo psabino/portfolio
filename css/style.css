@@ -93,6 +93,19 @@ header {
   white-space: nowrap;
 }
 
+/* Brand links home on inner pages (on the homepage it's a plain div):
+   name turns blue and the avatar grows a little on hover/focus */
+a.header-brand { border-radius: 12px; }
+a.header-brand .brand-text h1 { transition: color 0.2s; }
+a.header-brand:hover .brand-text h1,
+a.header-brand:focus-visible .brand-text h1 { color: var(--blue); }
+a.header-brand:focus-visible { outline: 3px solid var(--blue); outline-offset: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  a.header-brand .avatar-wrap { scale: 1; transition: scale 0.2s ease; }
+  a.header-brand:hover .avatar-wrap,
+  a.header-brand:focus-visible .avatar-wrap { scale: 1.08; }
+}
+
 nav {
   display: flex;
   align-items: center;
