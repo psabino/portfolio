@@ -1096,6 +1096,68 @@ html.scrolled .back-to-top { visibility: visible; opacity: 1; translate: 0; }
   .back-to-top { visibility: visible; opacity: 1; translate: 0; }
 }
 
+/* ─── LIGHTBOX (js/lightbox.js) ───
+   Images shown smaller than their real size open full screen on tap. */
+img.zoomable { cursor: zoom-in; }
+img.zoomable:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+
+.lightbox {
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgba(20, 20, 20, 0.97); /* near-solid, so the page doesn't show through */
+  overflow: hidden;
+}
+.lightbox::backdrop { background: rgba(20, 20, 20, 0.6); }
+.lightbox-stage {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+  display: grid;
+  place-items: center;
+  padding: max(56px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+.lightbox-img {
+  max-width: 100%;
+  max-height: calc(100dvh - 80px);
+  border-radius: 6px;
+  cursor: zoom-in;
+}
+.lightbox.is-zoomed .lightbox-stage { place-items: start; }
+.lightbox.is-zoomed .lightbox-img {
+  max-width: none;
+  max-height: none;
+  width: var(--zoom-width);
+  cursor: zoom-out;
+}
+.lightbox-close {
+  position: fixed;
+  top: max(12px, env(safe-area-inset-top));
+  right: max(12px, env(safe-area-inset-right));
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  cursor: pointer;
+}
+.lightbox-close svg { width: 20px; height: 20px; }
+.lightbox-close:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .lightbox[open], .lightbox[open]::backdrop { animation: lightbox-in 0.2s ease; }
+  @keyframes lightbox-in { from { opacity: 0; } }
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
   .about-inner {
@@ -1105,6 +1167,18 @@ html.scrolled .back-to-top { visibility: visible; opacity: 1; translate: 0; }
     display: none;
   }
   .about-content { padding-left: 0; } /* line up with the name and nav */
+  /* Shorter gaps between sections on phones (60px → 40px) */
+  section,
+  .benchmark-band,
+  .mockups-band,
+  .wireframe-section,
+  .unity-section { padding-block: 40px; }
+  .color-band { padding-top: 33px; }   /* keeps the visible gap equal, see .color-band */
+  .problem-band { padding-block: 32px; }
+  .thanks-section { padding-top: 40px; }
+  /* About page: show the photo above the text, full width */
+  .about-section--page .about-photo { display: block; width: 100%; height: auto; margin-bottom: 28px; }
+  .about-section--page .about-photo img { width: 100%; height: auto; aspect-ratio: 352 / 368; object-fit: cover; }
   /* Tools: all icons share one row, shrinking to fit (never above 40px) */
   .tool-icons { flex-wrap: nowrap; gap: 12px; }
   .tool-icons img { flex: 1 1 0; min-width: 0; max-width: 40px; width: auto; height: auto; aspect-ratio: 1; }
@@ -1139,7 +1213,25 @@ html.scrolled .back-to-top { visibility: visible; opacity: 1; translate: 0; }
   .mockup-phones { flex-wrap: wrap; }
   .screen-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 16px; }
   .cv-row { grid-template-columns: 1fr; }
-  .more-projects--row { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  /* Other projects: a swipeable carousel instead of a stack. Cards are 78% wide
+     so the next one peeks in; the row runs edge to edge and snaps per card.
+     Vertical padding leaves room for the cards' glow (overflow would clip it). */
+  .more-projects,
+  .more-projects--row {
+    display: flex;
+    justify-content: flex-start; /* centered overflow would hide the first card off-screen */
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scroll-padding-inline: 20px;
+    padding: 12px 20px 32px;
+    margin-bottom: -20px;
+    scrollbar-width: none;
+  }
+  .more-projects::-webkit-scrollbar { display: none; }
+  .more-projects--row { margin-inline: -20px; } /* bleed past the container's side padding */
+  .more-projects li { flex: 0 0 78%; scroll-snap-align: start; }
   /* Stacked on phones: image first, and slide up instead of sideways
      so nothing pokes past the screen edge */
   .component-row,
