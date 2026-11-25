@@ -1304,9 +1304,10 @@ img.zoomable:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px
   .more-projects::-webkit-scrollbar { display: none; }
   .more-projects--row { margin-inline: -20px; } /* bleed past the container's side padding */
   .more-projects li { flex: 0 0 78%; scroll-snap-align: start; }
-  /* Stacked on phones: image first, and slide up instead of sideways
-     so nothing pokes past the screen edge */
+  /* Stacked on phones: description first, then its image, and slide up
+     instead of sideways so nothing pokes past the screen edge */
   .component-row,
   .component-row:nth-child(even) { grid-template-columns: 1fr; gap: 20px; --reveal-x: 0; --reveal-y: 28px; }
-  .component-row:nth-child(even) img { order: 0; }
+  .component-row img,
+  .component-row:nth-child(even) img { order: 2; }
 }
