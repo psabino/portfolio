@@ -1078,6 +1078,18 @@ footer {
   from { transform: perspective(1200px) rotateY(-90deg); }
   to   { transform: perspective(1200px) rotateY(0); }
 }
+/* Only one side has a photo (e.g. About → Articles): no flip, just fade out
+   or in with the rest of the page */
+::view-transition-old(profile-photo):only-child {
+  animation: photo-fade 0.25s ease-in forwards;
+}
+::view-transition-new(profile-photo):only-child {
+  animation: photo-fade 0.25s ease-out reverse backwards;
+}
+@keyframes photo-fade {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
 
 /* ─── BACK TO TOP ───
    Floating button, shown once the page has scrolled one screen height.
