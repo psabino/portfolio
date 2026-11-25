@@ -860,7 +860,7 @@ section { padding: 60px 0; }
    style="--image-shadow: 0 8px 24px #251952; --image-radius: 16px" */
 .image-shadow {
   border-radius: var(--image-radius, 8px);
-  box-shadow: var(--image-shadow, 0 4px 8px rgba(38, 38, 38, 0.1)); /* #262626 @ 10% */
+  box-shadow: var(--image-shadow, 0 4px 8px rgba(38, 38, 38, 0.2)); /* #262626 @ 20% */
 }
 
 /* Centers a block image narrower than its container */
