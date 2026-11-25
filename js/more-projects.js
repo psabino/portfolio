@@ -8,6 +8,7 @@ const PROJECTS = [
   { href: '/work/paw-puzzles/',   code: 'pp', thumb: '/images/thumbs/paw-puzzles.png',   name: 'Paw Puzzles',   glow: 'shadow-blue' },
   { href: '/work/poker-nights/',  code: 'pn', thumb: '/images/thumbs/poker-nights.png',  name: 'Poker Nights',  glow: 'shadow-purple' },
   { href: '/work/fashion-match/', code: 'fm', thumb: '/images/thumbs/fashion-match.png', name: 'Fashion Match', glow: 'shadow-pink' },
+  { href: '/work/buraco-pwf/',   code: 'bp', thumb: '/images/thumbs/buraco-pwf.png',    name: 'Buraco: Play with Friends', glow: 'shadow-green' },
   { href: '/work/braspag-dash/',  code: 'bd', thumb: '/images/thumbs/braspag-dash.png',  name: 'Braspag Dash',  glow: 'shadow-blue' },
 ];
 const MAX_SUGGESTIONS = 3;

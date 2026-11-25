@@ -15,6 +15,7 @@
   --card-shadow-purple: 0px 8px 32px 0px rgba(73, 52, 148, 0.35);
   --card-shadow-pink: 0px 8px 32px 0px rgba(239, 181, 243, 0.55);
   --card-shadow-gray: 0px 8px 16px 0px rgba(213, 213, 213, 0.5);
+  --card-shadow-green: 0px 8px 32px 0px rgba(147, 174, 135, 0.55);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -337,6 +338,7 @@ nav a.active,
 .project-card.shadow-purple { box-shadow: var(--card-shadow-purple); }
 .project-card.shadow-pink  { box-shadow: var(--card-shadow-pink); }
 .project-card.shadow-gray  { box-shadow: var(--card-shadow-gray); }
+.project-card.shadow-green { box-shadow: var(--card-shadow-green); }
 
 .card-nda {
   position: relative;
@@ -507,6 +509,9 @@ section { padding: 60px 0; }
 
 .section-subtitle.light { color: #fff; }
 
+/* Light variant, e.g. a flow name above a screen grid (buraco-pwf) */
+.section-subtitle--light { font-weight: 300; line-height: 1.2; }
+
 .body-text {
   font-size: 18px;
   font-weight: 400;
@@ -517,6 +522,12 @@ section { padding: 60px 0; }
 .body-text.light { color: #fff; }
 
 .body-text p + p { margin-top: 14px; }
+
+/* Bulleted lists in body text: the reset removes list padding, which pushes
+   the bullets outside the text column */
+.body-text ul { padding-left: 22px; }
+.body-text p + ul { margin-top: 14px; }
+.body-text li + li { margin-top: 14px; }
 
 /* Links inside paragraphs and captions: bold, no underline, site blue
    (same as the headline and footer links) */
@@ -567,6 +578,10 @@ section { padding: 60px 0; }
 .problem-band .section-title { color: #fff; margin-bottom: 16px; }
 
 .problem-band .body-text { color: #fff; }
+
+/* Light background: dark text instead of white */
+.problem-band--light .section-title,
+.problem-band--light .body-text { color: var(--dark); }
 
 /* ─── COLOR BAND (generic full-width colored section) ───
    Set the color per section: <section class="color-band" style="--band-color:#281D51"> */
@@ -719,6 +734,16 @@ section { padding: 60px 0; }
   height: auto;
   border-radius: 16px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+/* Same column size, but an incomplete last row is centered (e.g. 5 screens in
+   3 columns: 3 + 2). Flex instead of grid, since grid can't center a partial row. */
+.screen-grid--centered {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.screen-grid--centered img {
+  width: calc((100% - (var(--cols, 3) - 1) * 24px) / var(--cols, 3));
 }
 .screen-grid--wireframe img {
   border: 4px solid #888;
@@ -1258,6 +1283,7 @@ img.zoomable:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px
   .phone-center { width: 240px; height: 520px; }
   .mockup-phones { flex-wrap: wrap; }
   .screen-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 16px; }
+  .screen-grid--centered img { width: calc((100% - 16px) / 2); }
   .cv-row { grid-template-columns: 1fr; }
   /* Other projects: a swipeable carousel instead of a stack. Cards are 78% wide
      so the next one peeks in; the row runs edge to edge and snaps per card.
